@@ -1,4 +1,10 @@
-<?php 
-//This is the landing page.
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Tipster</title>
+</head>
+<body>
 
- ?>
+</body>
+</html>
