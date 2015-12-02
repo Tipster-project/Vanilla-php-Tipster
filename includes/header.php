@@ -11,9 +11,18 @@
 </head>
 <body>	
 	<div id='login'>
-		<form action='' method='post'>
+		<form action='login_check.php' method='post'>
 			<input type='text' name='login_email' placeholder='Email'>
-			<input type='text' name="login_password" placeholder=''Password''>
-			<input type=''submit'' name=''login_btn'' value=''Login''>
+			<input type='text' name='login_password' placeholder='Password'>
+			<input type='submit' name='login_btn' value='Login'>
 		</form>	
+
+		<?php
+			if ($_SESSION['status'] == 'logged_in') {
+				echo "Inloggad";
+			}
+			else {
+				echo "inte inloggad";
+			}
+		?>
 	</div><!-- #login -->
