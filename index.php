@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Tipster</title>
-</head>
-<body>
+<?php 
+	include "includes/header.php"; 
+?>
 
-</body>
-</html>
+<?php 
+	include "includes/footer.php"; 
+?>
