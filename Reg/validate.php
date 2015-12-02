@@ -6,21 +6,11 @@ Returns:
 	0 - Username available
 	-1 - Wrong request
 **/
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "Registration";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection if it did not connect it will die.
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include '../includes/db_connect.php';
 //Checks first if $_POST['username'] exists and if it exists if it has a value and in that case gives it do $username.
 if(isset($_POST['username']) && $username = $_POST['username']){
 	//Checks if the the value of $username is allready saved in the database with a mysqli query.
-	$query=mysqli_query($conn, "SELECT * FROM users WHERE username='$username' ");
+	$query=mysqli_query($db_connect, "SELECT * FROM users WHERE user_name='$username' ");
 	//return how many rows it finds with the given value, if it finds 1 or more i means the value/username allready //exists and if it is a 0 it dident find a match and the value/username is avalible.
 	$find=mysqli_num_rows($query);
 	//echos the number of rows it found so ajax.js can make use of it.
