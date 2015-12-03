@@ -11,8 +11,6 @@
 		$sql = "SELECT * FROM users WHERE user_email = '$email' AND user_password = '$password'";
 		$result = mysqli_query($db_connect, $sql);
 		$row = mysqli_fetch_assoc($result);
-		print_r($row['admin']);
-
 		if($row == 0){
 
 			echo 'fel uppgifter';

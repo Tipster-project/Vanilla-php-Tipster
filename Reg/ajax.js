@@ -13,38 +13,37 @@ $(document).ready(function(e) {
             $(this).removeAttr('correct');
         }else{
             $('#message').text('checking...');
-                //if the above dosent match an ajax rutine will run with will send the value of username 
-                //with post to vaildate.php who will check with the database if value match any usernames in the database.
-                $.ajax({
-                    type:"post",
-                    url:"validate.php",
-                    data:"username="+username,
-                        success:function(data){
-                            //if it succeds with the check it will send back and return 0 with is no match, wich means that it does not allready exists.
-                            if(data==0){
-                                //hides the error icon if is set and gives it the correct icon. gives a message and gives the input the attribute correct.
-                                $('#uunchecked').hide();
-                                $('#uchecked').fadeIn('slow');
-                                $('#message').text('Username available');
-                                $('#uName').attr('correct', 'correct');
-                            }
-                            else if(data==-1){
-                                 //If their was something wrong with the request and it will put out a error icon and a error message and remove the attrbute correct if it has been given.
-                                $('#uchecked').hide();
-                                $('#uunchecked').fadeIn('slow');
-                                $('#message').text('Something with your request when wrong. Try again or a diffrent username.');
-                                $('#uName').removeAttr('correct');
-                            }else{
-                                //if the undername is taken it will put out a error icon and a error message and remove the attrbute correct if it has been given.
-                                $('#uchecked').hide();
-                                $('#uunchecked').fadeIn('slow');
-                                $('#message').text('Username already taken');
-                                $('#uName').removeAttr('correct');
-                            }
+            //if the above dosent match an ajax rutine will run with will send the value of username 
+            //with post to vaildate.php who will check with the database if value match any usernames in the database.
+            $.ajax({
+                type:"post",
+                url:"validate.php",
+                data:"username="+username,
+                    success:function(data){
+                        //if it succeds with the check it will send back and return 0 with is no match, wich means that it does not allready exists.
+                        if(data==0){
+                            //hides the error icon if is set and gives it the correct icon. gives a message and gives the input the attribute correct.
+                            $('#uunchecked').hide();
+                            $('#uchecked').fadeIn('slow');
+                            $('#message').text('Username available');
+                            $('#uName').attr('correct', 'correct');
                         }
-                });
+                        else if(data==-1){
+                             //If their was something wrong with the request and it will put out a error icon and a error message and remove the attrbute correct if it has been given.
+                            $('#uchecked').hide();
+                            $('#uunchecked').fadeIn('slow');
+                            $('#message').text('Something with your request when wrong. Try again or a diffrent username.');
+                            $('#uName').removeAttr('correct');
+                        }else{
+                            //if the undername is taken it will put out a error icon and a error message and remove the attrbute correct if it has been given.
+                            $('#uchecked').hide();
+                            $('#uunchecked').fadeIn('slow');
+                            $('#message').text('Username already taken');
+                            $('#uName').removeAttr('correct');
+                        }
+                    }
+            });
         }
- 
     });
 
     //checks the given password if it holdes up to password rules.
@@ -52,7 +51,7 @@ $(document).ready(function(e) {
         var inputVal = $(this).val();
         //pswCheck gets Regexp rules that checks if the password has minimum of 1 digit, minimun of 1 capital letter, minimum of 1 special sign
         //and that it is minimum of 8 characters. 
-        var pswCheck = /^(?=.*\d)(?=.*[A-Z])(?=.*\W)(.{8,})$/; 
+        var pswCheck = /^(?=.*[A-Z])(.{6,})$/; 
          //if the inputs value i empty it will output a error message and en error icon. It will also remove the attribute correct if it has been given.
         if(inputVal == ''){
             $('#pswchecked').hide();
@@ -64,7 +63,7 @@ $(document).ready(function(e) {
         }else if(!pswCheck.test(inputVal)){
             $('#pswchecked').hide();
             $('#pswunchecked').fadeIn('slow');
-            $('#pswMsg').text('The password needs to contain minimum of 1 capital letter, 1 digit, 1 special sign and contain minimum of 8 characters.');
+            $('#pswMsg').text('The password needs to contain minimum of 1 capital letter, contain minimum of 6 characters.');
             $(this).removeAttr('correct');
         //if inputVal matches the rules it will put out the correct icon and give it the attribute correct.
         }else{
