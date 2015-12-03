@@ -19,10 +19,12 @@
 			if($row['admin'] == 'false'){
 				$_SESSION['user_loggedin'] = 'true';
 				$_SESSION['user_name'] = $row['user_name'];
+				$_SESSION['user_id'] = $row['user_id'];
 				header("Location: user_dash.php");
 			}else{
 				$_SESSION['admin_loggedin'] = 'true';
 				$_SESSION['user_name'] = $row['user_name'];
+				$_SESSION['user_id'] = $row['user_id'];
 				header("Location: admin_dash.php");
 			}
 		}
