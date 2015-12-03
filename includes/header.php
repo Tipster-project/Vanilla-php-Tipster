@@ -18,7 +18,7 @@
 		</form>	
 
 		<?php
-			if ($_SESSION['status'] == 'logged_in') {
+			if (isset($_SESSION['status']) && $_SESSION['status'] == 'logged_in') {
 				echo "Inloggad";
 			}
 			else {
