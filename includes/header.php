@@ -18,11 +18,12 @@
 		</form>	
 
 		<?php
-			if (isset($_SESSION['status']) && $_SESSION['status'] == 'logged_in') {
-				echo "Inloggad";
-			}
-			else {
-				echo "inte inloggad";
+			if(isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin'] == 'true'){
+				echo 'Admin inloggad';
+			}else if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin'] == 'true'){
+				echo 'User inloggad';
+			}else{
+				echo 'inte inloggad';
 			}
 		?>
 	</div><!-- #login -->

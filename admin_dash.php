@@ -1,6 +1,5 @@
 <?php 
-	include 'db_connect.php'; 
-	session_start();
+	include 'includes/header.php';
 ?>
 <div id='team_reg'>
 	<form action='team_reg.php' method='post' enctype='multipart/form-data'>
@@ -12,3 +11,4 @@
 		<input type='submit' name='team_reg_btn' value='Registrate'>
 	</form>	
 </div>
+<?php include 'includes/footer.php'; ?>
