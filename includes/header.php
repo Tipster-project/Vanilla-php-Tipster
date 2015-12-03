@@ -26,3 +26,4 @@
 			}
 		?>
 	</div><!-- #login -->
+	<a href="logout.php">Logga ut</a>

@@ -1,10 +1,3 @@
-	
-	<?php
-		session_start();
-			if ($_SESSION['status'] == 'logged_in') {
-				echo "Inloggad";
-			}
-			else {
-				echo "inte inloggad";
-			}
-		?>
+<?php include 'includes/header.php' ?>
+	<?php print_r($_SESSION['result']); ?>
+<?php include 'includes/footer.php' ?>
