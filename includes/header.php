@@ -12,8 +12,8 @@
 <body>	
 	<div id='login'>
 		<form action='login_check.php' method='post'>
-			<input type='text' name='login_email' placeholder='Email'>
-			<input type='text' name='login_password' placeholder='Password'>
+			<input type='email' name='login_email' placeholder='Email'>
+			<input type='password' name='login_password' placeholder='Password'>
 			<input type='submit' name='login_btn' value='Login'>
 		</form>	
 
@@ -23,7 +23,7 @@
 			}else if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin'] == 'true'){
 				echo 'User inloggad';
 			}else{
-				echo 'inte inloggad';
+				echo 'inte inloggad'; 
 			}
 		?>
 	</div><!-- #login -->

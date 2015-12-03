@@ -3,7 +3,7 @@
 include 'includes/db_connect.php';
 //Saves the values from the registration form into the database.
 
-$sql = "INSERT INTO teams (team_name, group_nr, flag_url)
+$sql = "INSERT INTO teams (team_name, group_nr, team_flag)
 VALUES ('" . $_POST['country'] . "', '" . $_POST['group_reg'] . "', '". basename($_FILES['country_flag']['name'])."')";
 
 $target_dir = "img/";
