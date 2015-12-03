@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: localhost
--- Tid vid skapande: 03 dec 2015 kl 11:23
+-- Tid vid skapande: 03 dec 2015 kl 15:42
 -- Serverversion: 5.6.21
 -- PHP-version: 5.6.3
 
@@ -29,9 +29,10 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `bets` (
 `bet_id` int(11) NOT NULL,
   `game_id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `home_score` int(11) NOT NULL,
-  `away_score` int(11) NOT NULL
+  `tournament_id` int(11) NOT NULL,
+  `goal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -42,11 +43,31 @@ CREATE TABLE IF NOT EXISTS `bets` (
 
 CREATE TABLE IF NOT EXISTS `games` (
 `game_id` int(11) NOT NULL,
-  `game_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `home_team` int(11) NOT NULL,
-  `away_team` int(11) NOT NULL,
-  `home_score` int(11) NOT NULL,
-  `away_score` int(11) NOT NULL
+  `home_team` varchar(30) NOT NULL,
+  `away_team` varchar(30) NOT NULL,
+  `game_date` varchar(30) NOT NULL,
+  `game_time` varchar(30) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumpning av Data i tabell `games`
+--
+
+INSERT INTO `games` (`game_id`, `home_team`, `away_team`, `game_date`, `game_time`) VALUES
+(1, '0', '0', '2016-02-18', '18:00'),
+(2, 'Germany', 'Italy', '2016-02-28', '20:00');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `goals`
+--
+
+CREATE TABLE IF NOT EXISTS `goals` (
+`goal_id` int(11) NOT NULL,
+  `game_id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
+  `goal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -59,22 +80,27 @@ CREATE TABLE IF NOT EXISTS `teams` (
 `team_id` int(11) NOT NULL,
   `team_name` varchar(255) NOT NULL,
   `group_nr` varchar(255) NOT NULL,
-  `flag_url` varchar(255) NOT NULL,
-  `team_points` int(11) NOT NULL,
-  `goals` int(11) NOT NULL,
-  `concede` int(11) NOT NULL,
-  `goal_difference` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `team_flag` varchar(255) NOT NULL,
+  `team_points` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumpning av Data i tabell `teams`
 --
 
-INSERT INTO `teams` (`team_id`, `team_name`, `group_nr`, `flag_url`, `team_points`, `goals`, `concede`, `goal_difference`) VALUES
-(1, 'sweden', '', '', 0, 0, 0, 0),
-(2, 'france', '', '', 0, 0, 0, 0),
-(3, 'spain', '', '', 2, 0, 0, 0),
-(4, 'france', 'C', '', 0, 0, 0, 0);
+INSERT INTO `teams` (`team_id`, `team_name`, `group_nr`, `team_flag`, `team_points`) VALUES
+(1, 'sweden', '', '', 0),
+(2, 'france', '', '', 0),
+(3, 'spain', '', '', 2),
+(4, 'france', 'C', '', 0),
+(5, 'France', 'A', '', 0),
+(6, 'France', 'A', '', 0),
+(7, 'France', 'A', '', 0),
+(8, 'France', 'A', '', 0),
+(9, 'France', 'A', '', 0),
+(10, 'France', 'V', '', 0),
+(11, 'France', 'V', '', 0),
+(12, 'France', 'A', '', 0);
 
 -- --------------------------------------------------------
 
@@ -85,7 +111,8 @@ INSERT INTO `teams` (`team_id`, `team_name`, `group_nr`, `flag_url`, `team_point
 CREATE TABLE IF NOT EXISTS `tournament` (
 `tournament_id` int(11) NOT NULL,
   `tournament_name` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `tournament_text` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -99,16 +126,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_name` varchar(255) NOT NULL,
   `user_password` varchar(255) NOT NULL,
   `user_email` varchar(255) NOT NULL,
-  `admin` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `admin` varchar(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumpning av Data i tabell `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_password`, `user_email`, `admin`) VALUES
-(5, 'lisafisa', 'drug6bAx!', 'lisahjarpe@gmail.com', 0),
-(1, 'lisaadmin', 'drug6bAx!', 'lisahjarpe@gmail.com', 1);
+(1, 'lisaadmin', 'drug6bAx!', 'lisahjarpe@hotmail.com', 'true'),
+(5, 'lisafisa', 'drug6bAx!', 'lisahjarpe@gmail.com', 'false');
 
 -- --------------------------------------------------------
 
@@ -140,6 +167,12 @@ ALTER TABLE `games`
  ADD PRIMARY KEY (`game_id`), ADD UNIQUE KEY `game_id` (`game_id`);
 
 --
+-- Index för tabell `goals`
+--
+ALTER TABLE `goals`
+ ADD PRIMARY KEY (`goal_id`);
+
+--
 -- Index för tabell `teams`
 --
 ALTER TABLE `teams`
@@ -155,7 +188,7 @@ ALTER TABLE `tournament`
 -- Index för tabell `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`admin`), ADD UNIQUE KEY `user_id` (`user_id`,`user_name`);
+ ADD PRIMARY KEY (`user_id`), ADD UNIQUE KEY `user_id` (`user_id`,`user_name`);
 
 --
 -- Index för tabell `user_tournaments`
@@ -176,12 +209,17 @@ MODIFY `bet_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT för tabell `games`
 --
 ALTER TABLE `games`
-MODIFY `game_id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `game_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT för tabell `goals`
+--
+ALTER TABLE `goals`
+MODIFY `goal_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT för tabell `teams`
 --
 ALTER TABLE `teams`
-MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT för tabell `tournament`
 --
@@ -191,7 +229,7 @@ MODIFY `tournament_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT för tabell `users`
 --
 ALTER TABLE `users`
-MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT för tabell `user_tournaments`
 --
