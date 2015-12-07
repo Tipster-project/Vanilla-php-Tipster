@@ -12,6 +12,7 @@
 <body>	
 	<div id='login'>
 		<?php
+
 		if(isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin'] == 'true'){ ?>
 			<a href="logout.php">Logga ut</a>
 		<?php }else if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin'] == 'true'){?>
@@ -23,4 +24,5 @@
 				<input type='submit' name='login_btn' value='Login'>
 			</form>	
 		<?php } ?>
+
 	</div><!-- #login -->
