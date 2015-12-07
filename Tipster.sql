@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: localhost
--- Tid vid skapande: 03 dec 2015 kl 15:42
+-- Tid vid skapande: 07 dec 2015 kl 11:12
 -- Serverversion: 5.6.21
 -- PHP-version: 5.6.3
 
@@ -82,25 +82,18 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `group_nr` varchar(255) NOT NULL,
   `team_flag` varchar(255) NOT NULL,
   `team_points` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumpning av Data i tabell `teams`
 --
 
 INSERT INTO `teams` (`team_id`, `team_name`, `group_nr`, `team_flag`, `team_points`) VALUES
-(1, 'sweden', '', '', 0),
-(2, 'france', '', '', 0),
-(3, 'spain', '', '', 2),
-(4, 'france', 'C', '', 0),
-(5, 'France', 'A', '', 0),
-(6, 'France', 'A', '', 0),
-(7, 'France', 'A', '', 0),
-(8, 'France', 'A', '', 0),
-(9, 'France', 'A', '', 0),
-(10, 'France', 'V', '', 0),
-(11, 'France', 'V', '', 0),
-(12, 'France', 'A', '', 0);
+(17, 'France', 'A', 'FRA.png', 0),
+(18, 'Sweden', 'B', 'SWE.png', 0),
+(19, 'England', 'A', 'ENG.png', 0),
+(20, 'Ireland', 'C', 'IRL.png', 0),
+(21, 'Spain', 'C', 'ESP.png', 0);
 
 -- --------------------------------------------------------
 
@@ -219,7 +212,7 @@ MODIFY `goal_id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT för tabell `teams`
 --
 ALTER TABLE `teams`
-MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT för tabell `tournament`
 --

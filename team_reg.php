@@ -16,6 +16,7 @@ if (move_uploaded_file($_FILES['country_flag']['tmp_name'], $target_file)) {
 if(mysqli_query($db_connect, $sql)){
 	//success
 	echo 'Bean Bag';
+	header('Location: admin_dash.php');
 }else{
 	// echo a error message if the query dident work.
 	echo "Error: ". $sql . "<br>" . mysqli_error($db_connect);
