@@ -4,7 +4,7 @@
 ?>
 <div id='team_reg'>
 	<h1>Registrate teams</h1>
-	<form action='team_reg.php' method='post'>
+	<form enctype="multipart/form-data" action='team_reg.php' method='post'>
 		<label>Team:</label></br>
 		<input type='text' name='country' placeholder='country'></br>
 		<label>Team-flag:</label></br>

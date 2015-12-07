@@ -11,9 +11,6 @@
 </head>
 <body>	
 	<div id='login'>
-<<<<<<< HEAD
-
-
 		<?php
 			if(isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin'] == 'true'){ ?>
 				<a href="logout.php">Logga ut</a>
@@ -25,8 +22,8 @@
 					<input type='text' name='login_password' placeholder='Password'>
 					<input type='submit' name='login_btn' value='Login'>
 				</form>	
-			<?php }
-=======
+			<?php } ?>
+
 		<form action='login_check.php' method='post'>
 			<input type='email' name='login_email' placeholder='Email'>
 			<input type='password' name='login_password' placeholder='Password'>
@@ -41,6 +38,5 @@
 			}else{
 				echo 'inte inloggad'; 
 			}
->>>>>>> origin/master
 		?>
 	</div><!-- #login -->
