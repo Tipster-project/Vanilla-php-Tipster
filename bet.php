@@ -22,10 +22,9 @@
 		$tournament_id = 1;
 		?>
 		<p><?php echo $team_name; ?></p>
-		<input type="number" name="<?php echo $game_id; ?>_goal"/></br>
-		<input type="hidden" name="<?php echo $game_id; ?>" />
-		<input type="hidden" name="<?php echo $team_id; ?>" />
-		<input type="hidden" name="<?php echo $user_id; ?>" />
+		<input type="number" name="goal[]"/></br>
+		<input type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" />
+		<input type="hidden" name="team_id[]" value="<?php echo $team_id; ?>" />
 		<input type="hidden" name="<?php echo $tournament_id; ?>" />
 		<?php
 	}
