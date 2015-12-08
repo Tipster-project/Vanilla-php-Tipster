@@ -79,7 +79,7 @@ $rowB = mysqli_fetch_assoc($resultB);
 <!-- ************* GROUP C ************** -->
 <!-- ************************************ -->
 <?
-$queryC = 'SELECT * FROM teams ORDER BY team_points';
+$queryC = 'SELECT * FROM teams ORDER BY team_points ASC';
 
 $resultC = mysqli_query($db_connect, $queryC);
 $rowC = mysqli_fetch_assoc($resultC);
