@@ -10,3 +10,4 @@ for ($i=0; $i < count($_POST["game_id"]); $i++) {
 		echo "Error: ". $query . "<br>" . mysqli_error($db_connect);
 	}
 }
+
