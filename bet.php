@@ -1,4 +1,4 @@
-<?php
+<?php include 'includes/header.php';
 	/*function resultToArray($result) {
 	    $rows = array();
 	    while($row = $result->fetch_assoc()) {
