@@ -26,8 +26,13 @@ $sql = "SELECT tournament_name FROM tournament WHERE tournament_id IN ($comma_se
 $result = $db_connect->query($sql);
 
 while($row = mysqli_fetch_assoc($result)) { ?>
-
-	<h1><?php echo $row['tournament_name']; ?></h1>
+	
+	<a href="tournaments_single.php?group=<?php echo $row['tournament_name']; ?>">
+		<div>
+			<h1><?php echo $row['tournament_name']; ?></h1>
+		</div>
+	</a>
+	
 
 <?php } ?>
 

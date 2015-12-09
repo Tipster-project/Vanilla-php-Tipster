@@ -1,16 +1,32 @@
 <?php include 'includes/header.php'; ?>
 
+<<<<<<< Updated upstream
 <!-- ************************************ -->	
 <!-- ************* GROUP A ************** -->
 <!-- ************************************ -->
 <?php
 $queryA = 'SELECT * FROM teams ORDER BY team_points';
+=======
+<?php
+include 'includes/header.php'; 
+
+teamGroups('A');
+teamGroups('B');
+teamGroups('C');
+
+function teamGroups($teamGroup){
+global $db_connect;
+>>>>>>> Stashed changes
 
 $result = mysqli_query($db_connect, $queryA);
 $row = mysqli_fetch_assoc($result);
 ?>
 
+<<<<<<< Updated upstream
 <h1>Group A</h1>
+=======
+<h1>Group <?php echo $teamGroup; ?></h1>
+>>>>>>> Stashed changes
 <table style="border:solid black 1px">
 	<tbody>
 		<tr>
@@ -26,17 +42,18 @@ $row = mysqli_fetch_assoc($result);
 			if ( "{$row['group_nr']}"  == "A"){
 				?>
 				<tr>
-					<td><img src="img/<? echo "{$row['team_flag']}"; ?>" /></td>
-					<td><? echo "{$row['team_name']}"; ?></td>
-					<td><? echo "{$row['team_points']}"; ?></td>
-					<td><? echo "{$row['group_nr']}"; ?></td>
+					<td><img src="img/<?php echo "{$row['team_flag']}"; ?>" /></td>
+					<td><?php echo "{$row['team_name']}"; ?></td>
+					<td><?php echo "{$row['team_points']}"; ?></td>
+					<td><?php echo "{$row['group_nr']}"; ?></td>
 				</tr>
-				<?
+				<?php
 			}
 		}	
 		?>
 	</tbody>
 </table>
+<<<<<<< Updated upstream
 
 <!-- ************************************ -->	
 <!-- ************* GROUP B ************** -->
@@ -83,6 +100,10 @@ $queryC = 'SELECT * FROM teams ORDER BY team_points ASC';
 
 $resultC = mysqli_query($db_connect, $queryC);
 $rowC = mysqli_fetch_assoc($resultC);
+=======
+<?php
+}
+>>>>>>> Stashed changes
 ?>
 
 <h1>Group C</h1>

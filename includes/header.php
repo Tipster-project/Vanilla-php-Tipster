@@ -15,8 +15,11 @@
 
 		if(isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin'] == 'true'){ ?>
 			<a href="logout.php">Logga ut</a>
+			Admin: <?php echo $_SESSION['user_name']; ?>
 		<?php }else if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin'] == 'true'){?>
 			<a href="logout.php">Logga ut</a>
+			User: <?php echo $_SESSION['user_name']; ?>
+
 		<?php }else{?>
 			<form action='login_check.php' method='post'>
 				<input type='text' name='login_email' placeholder='Email'>
