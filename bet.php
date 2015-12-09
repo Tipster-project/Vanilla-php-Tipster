@@ -6,7 +6,7 @@
 	    }
 	    return $rows;
 	}*/
-	$query = "SELECT teams.*, games.* FROM games LEFT JOIN teams on games.team_name = teams.team_name";
+	$query = "SELECT teams.*, games.*, bets.* FROM games LEFT JOIN teams on games.team_name = teams.team_name LEFT JOIN bets on teams.team_id = bets.team_id";
 	
 	$result = $db_connect->query($query);
 	/*$rows = resultToArray($result);*/
@@ -17,12 +17,13 @@
 	while($row = mysqli_fetch_assoc($result)) {
 		$game_id = $row["game_id"];
 		$team_id = $row["team_id"];
-		$user_id = $_SESSION["user_id"];
+		$goal = $row["goal"];
+		$user_id = $_SESSION["user_id"];	
 		$team_name = $row["team_name"];
 		$tournament_id = 1;
 		?>
 		<p><?php echo $team_name; ?></p>
-		<input type="number" name="goal[]"/></br>
+		<input type="number" name="goal[]" value="<?php echo $goal; ?>"/></br>
 		<input type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" />
 		<input type="hidden" name="team_id[]" value="<?php echo $team_id; ?>" />
 		<input type="hidden" name="<?php echo $tournament_id; ?>" />
