@@ -17,23 +17,26 @@ $row_id = array();
 for ($x = 0; $x < count($rows); $x++) {
     $row_id[] = $rows[$x]['tournament_id'];
 } 
+
 $comma_separated = implode(",", $row_id);
 
 $query = "SELECT tournament_name, tournament_id FROM tournament WHERE tournament_id IN ($comma_separated)";
 
 $result = $db_connect->query($query);
 ?> 
+
 <h2>Välj turnering</h2>
 <form action="includes/betting.php" method="post">
-<select name="selected_tournament"> 
-	<?php
-while($row = mysqli_fetch_assoc($result)) { ?>
-	<option value="<?php echo $row['tournament_id']; ?>"><?php echo $row['tournament_name']; ?></option>
-	<input type="hidden" name="tournament_name" value="<?php echo $row['tournament_name']; ?>" />
-
-<?php } ?>
-</select>
-<input type="submit" value="Välj turnering">
+	<select name="selected_tournament"> 
+		<?php
+		while($row = mysqli_fetch_assoc($result)) { 
+			?>
+			<option value="<?php echo $row['tournament_id']; ?>"><?php echo $row['tournament_name']; ?></option>
+		<?php 
+		} 
+		?>
+	</select>
+	<input type="submit" value="Välj turnering">
 </form>
 <?php
 
