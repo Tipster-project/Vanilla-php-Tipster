@@ -37,7 +37,6 @@ while($row = mysqli_fetch_assoc($result)) { ?>
 </form>
 <?php
 
-
 /*	$query = "SELECT teams.*, games.*, bets.* FROM games LEFT JOIN teams on games.team_name = teams.team_name";
 	//  LEFT JOIN bets on bets.game_id = games.game_id
 	$result = $db_connect->query($query);
