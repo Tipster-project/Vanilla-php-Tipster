@@ -1,6 +1,10 @@
-
-
-<?php include 'includes/header.php'; ?>
+<?php
+/**
+This file gets a $_GET variabel named group wish contains the id of the tournament you clicked to visit in the tournament list.
+It takes this id to get all the information about the tournament like title and tounament text.
+The other thing is that we get the scores from the users and sort them out with higest as number 1 and so on.
+*/
+ include 'includes/header.php'; ?>
 
 <?php 
 

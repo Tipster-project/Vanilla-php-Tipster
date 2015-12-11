@@ -1,3 +1,4 @@
+
 <?php
 
 function resultToArray($result) {
@@ -70,3 +71,4 @@ $result = $db_connect->query($query);
 	      	
 	$db_connect->close();
 ?>
+

@@ -4,6 +4,7 @@ $tournament_name = $_POST["tournament_name"];
 $tournament_id = $_POST["selected_tournament"];
 $user_id = $_SESSION["user_id"];
 
+
 $query = "SELECT * FROM bets WHERE tournament_id = $tournament_id AND user_id = $user_id";
 
 if(mysqli_query($db_connect, $query)) {
@@ -15,11 +16,16 @@ if(mysqli_query($db_connect, $query)) {
 /*$user_id = $_SESSION["user_id"];*/
 /*
 for ($i=0; $i < count($_POST["game_id"]); $i++) { 
+
 	$query = "INSERT INTO bets (game_id, team_id, user_id, tournament_id, goal) VALUES('".$_POST['game_id'][$i]."', '".$_POST['team_id'][$i]."', $user_id, 1, '".$_POST['goal'][$i]."')";
+
 	if(mysqli_query($db_connect, $query)) {
+
 		echo "SUccess mf!";
 		// header('Location: ../bet.php');
+
 	} else {
+		
 		echo "Error: ". $query . "<br>" . mysqli_error($db_connect);
 	}
 }
