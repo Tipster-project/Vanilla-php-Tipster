@@ -1,18 +1,19 @@
-
 <?php
 include 'includes/header.php'; 
 
 teamGroups('A');
 teamGroups('B');
 teamGroups('C');
+teamGroups('D');
+teamGroups('E');
+teamGroups('F');
 
+//function that prints out every group ordered by letter
 function teamGroups($teamGroup){
 global $db_connect;
 
 $query = 'SELECT * FROM teams ORDER BY team_points';
-
 $result = mysqli_query($db_connect, $query);
-$row = mysqli_fetch_assoc($result);
 ?>
 
 <h1>Group <?php echo $teamGroup; ?></h1>
@@ -26,6 +27,7 @@ $row = mysqli_fetch_assoc($result);
 		</tr>
 
 		<?php
+		//for each row that exist with a specific letter, print table
 		while($row = $result->fetch_assoc()) {
 			
 			if ( "{$row['group_nr']}"  == $teamGroup){
