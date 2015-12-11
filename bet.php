@@ -19,7 +19,6 @@ for ($x = 0; $x < count($rows); $x++) {
 } 
 $comma_separated = implode(",", $row_id);
 
-
 $query = "SELECT tournament_name, tournament_id FROM tournament WHERE tournament_id IN ($comma_separated)";
 
 $result = $db_connect->query($query);

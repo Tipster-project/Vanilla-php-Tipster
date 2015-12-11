@@ -2,11 +2,12 @@
 session_start();
 $tournament_name = $_POST["tournament_name"];
 $tournament_id = $_POST["selected_tournament"];
-echo $tournament_id . $tournament_name;
-$query = "SELECT * FROM tournament WHERE tournament_id = $tournament_id";
+$user_id = $_SESSION["user_id"];
+
+$query = "SELECT * FROM bets WHERE tournament_id = $tournament_id AND user_id = $user_id";
 
 if(mysqli_query($db_connect, $query)) {
-	
+	echo "hej!";
 } else {
 	echo "Du är inte med i några turneringar än! Skapa en eller be dina kompisar om en inbjudan!";
 }
