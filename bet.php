@@ -1,6 +1,6 @@
 <?php
 
-	function resultToArray($result) {
+function resultToArray($result) {
     $rows = array();
     while($row = $result->fetch_assoc()) {
         $rows[] = $row;
@@ -30,6 +30,7 @@ $result = $db_connect->query($query);
 	<?php
 while($row = mysqli_fetch_assoc($result)) { ?>
 	<option value="<?php echo $row['tournament_id']; ?>"><?php echo $row['tournament_name']; ?></option>
+	<input type="hidden" name="tournament_name" value="<?php echo $row['tournament_name']; ?>" />
 
 <?php } ?>
 </select>

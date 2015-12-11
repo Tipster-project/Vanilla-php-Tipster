@@ -1,6 +1,15 @@
 <?php require "db_connect.php";
 session_start();
-var_dump($_POST["selected_tournament"]);
+$tournament_name = $_POST["tournament_name"];
+$tournament_id = $_POST["selected_tournament"];
+echo $tournament_id . $tournament_name;
+$query = "SELECT * FROM tournament WHERE tournament_id = $tournament_id";
+
+if(mysqli_query($db_connect, $query)) {
+	
+} else {
+	echo "Du är inte med i några turneringar än! Skapa en eller be dina kompisar om en inbjudan!";
+}
 //Finlir med isset knapp osv behöver kirras.
 /*$user_id = $_SESSION["user_id"];*/
 /*
