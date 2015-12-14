@@ -18,9 +18,9 @@
 <div id='game_reg'>
 	<h1>Registrate games</h1>
 	<form action='game_reg.php' method='post'>
-		<label>Hometeam:</label></br>
+		<label>Home-team:</label></br>
 		<input type='text' name='home_team' placeholder='home_team'></br>
-		<label>Awayteam:</label></br>
+		<label>Away-team:</label></br>
 		<input type='text' name='away_team' placeholder='away_team'></br>
 		<label>Game date:</label></br>
 		<input type='date' name='game_date' placeholder='game_date'></br>

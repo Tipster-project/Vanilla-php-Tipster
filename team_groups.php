@@ -12,7 +12,7 @@ teamGroups('F');
 function teamGroups($teamGroup){
 global $db_connect;
 
-$query = 'SELECT * FROM teams ORDER BY team_points';
+$query = 'SELECT * FROM teams ORDER BY team_points DESC';
 $result = mysqli_query($db_connect, $query);
 ?>
 
@@ -23,7 +23,6 @@ $result = mysqli_query($db_connect, $query);
 			<th></th>
 			<th>Team</th>
 			<th>Points</th>
-			<th>group</th>
 		</tr>
 
 		<?php
@@ -36,7 +35,6 @@ $result = mysqli_query($db_connect, $query);
 					<td><img src="img/<?php echo "{$row['team_flag']}"; ?>" /></td>
 					<td><?php echo "{$row['team_name']}"; ?></td>
 					<td><?php echo "{$row['team_points']}"; ?></td>
-					<td><?php echo "{$row['group_nr']}"; ?></td>
 				</tr>
 				<?php
 			}

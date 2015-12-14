@@ -22,17 +22,21 @@ if(mysqli_query($db_connect, $query)) {
 		<?php
 		while($row = mysqli_fetch_assoc($result2)) {
 
-			var_dump($row);
+			// var_dump($row);
 
 			$game_id = $row["game_id"];
 			$team_id = $row["team_id"];
 			$goal = $row["goal"];
 			$user_id = $_SESSION["user_id"];	
 			$team_name = $row["team_name"];
+			$game_nr = $row["game_number"];
+
+			
+			
 			?>
 			<p><?php echo $team_name . $game_id . $row["team_id"]; ?></p>
-			<input type="number" name="goal[]" value="<?php echo $goal; ?>"/></br>
-			<input type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" />
+			<input type="number" gamenr="<?php echo $game_nr; ?>" name="goal_<?php echo $game_id; ?>"  value="<?php echo $goal; ?>"/></br>
+			<!-- <input type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /> -->
 			<input type="hidden" name="team_id[]" value="<?php echo $team_id; ?>" />
 			<input type="hidden" name="tournament_id" value="<?php echo $tournament_id; ?>" />
 			<?php

@@ -1,4 +1,4 @@
-<?php include 'includes/header.php' ?>
+
 
 <div id='tournament_reg'>
 	<form action='reg_tournament.php' method='post'>
