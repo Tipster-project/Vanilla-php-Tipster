@@ -6,6 +6,7 @@ $T_name = $_POST['tournament_name'];
 $T_text = $_POST['tournament_text']; 
 $user_id = $_SESSION['user_id'];
 $user_name = $_SESSION['user_name'];
+//$email_string = $_POST['invitation-email'];
 
 
 $sql = "INSERT INTO tournament (tournament_name, user_id, tournament_text) 

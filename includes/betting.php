@@ -5,15 +5,11 @@ $tournament_id = $_POST["selected_tournament"];
 $user_id = $_SESSION["user_id"];
 
 
-$query = "SELECT * FROM bets WHERE tournament_id = $tournament_id AND user_id = $user_id";
 
-if(mysqli_query($db_connect, $query)) {
-
-
-	$query2 = "SELECT teams.*, games.*, bets.* 
+	$query2 = "SELECT teams.*, games.*, bets.goal
 				FROM games 
-				LEFT JOIN teams on games.team_name = teams.team_name 
-				LEFT JOIN bets on bets.game_id = games.game_id";
+				LEFT JOIN teams on games.team_name = teams.team_name
+				LEFT JOIN bets on games.game_id = bets.game_id";
 	 
 	$result2 = $db_connect->query($query2);
 
@@ -43,9 +39,9 @@ if(mysqli_query($db_connect, $query)) {
 
 			
 			?>
-			<p><img src="../img/<?php echo $team_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $team_name . $game_id . $row["team_id"]; ?></p>
-			<input type="number" gamenr="<?php echo $game_nr; ?>" name="goal_<?php echo $game_id; ?>"  value="<?php echo $goal; ?>"/></br>
-			<!-- <input type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /> -->
+			<p><img src="../img/<?php echo $team_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $team_name. ''; ?></p>
+			<input type="number" gamenr="<?php echo $game_nr; ?>" name="goal_<?php echo $game_id; ?>"  value="<?php if(!is_null($goal)){ echo $goal; }else{ } ?>"/></br>
+			<input type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" />
 			<input type="hidden" name="team_id[]" value="<?php echo $team_id; ?>" />
 			<input type="hidden" name="tournament_id" value="<?php echo $tournament_id; ?>" />
 			<?php
@@ -55,6 +51,3 @@ if(mysqli_query($db_connect, $query)) {
 	</form>
 	<?php
 
-} else {
-	echo "Du är inte med i några turneringar än! Skapa en eller be dina kompisar om en inbjudan!";
-}
