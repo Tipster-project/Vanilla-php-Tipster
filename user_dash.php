@@ -9,6 +9,5 @@
 	</form>
 </div>
 
-<?php include "bet.php"; ?>
 
 <?php include 'includes/footer.php' ?>
