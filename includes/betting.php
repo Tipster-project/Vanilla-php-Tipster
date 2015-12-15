@@ -10,6 +10,7 @@ $user_id = $_SESSION["user_id"];
 				FROM games 
 				LEFT JOIN teams on games.team_name = teams.team_name
 				LEFT JOIN bets on games.game_id = bets.game_id";
+
 	 
 	$result2 = $db_connect->query($query2);
 
