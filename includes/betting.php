@@ -13,7 +13,8 @@ if(mysqli_query($db_connect, $query)) {
 	$query2 = "SELECT teams.*, games.*, bets.* 
 				FROM games 
 				LEFT JOIN teams on games.team_name = teams.team_name 
-				LEFT JOIN bets on bets.game_id = games.game_id";
+				LEFT JOIN bets on bets.game_id = games.game_id
+				ORDER BY game_number";
 	 
 	$result2 = $db_connect->query($query2);
 
@@ -44,8 +45,8 @@ if(mysqli_query($db_connect, $query)) {
 			
 			?>
 			<p><img src="../img/<?php echo $team_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $team_name . $game_id . $row["team_id"]; ?></p>
-			<input type="number" gamenr="<?php echo $game_nr; ?>" name="goal_<?php echo $game_id; ?>"  value="<?php echo $goal; ?>"/></br>
-			<!-- <input type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /> -->
+			<input type="number" gamenr="<?php echo $game_nr; ?>" name="goal[]"  value="<?php echo $goal; ?>"/></br>
+			<input type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" />
 			<input type="hidden" name="team_id[]" value="<?php echo $team_id; ?>" />
 			<input type="hidden" name="tournament_id" value="<?php echo $tournament_id; ?>" />
 			<?php
