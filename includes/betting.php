@@ -42,8 +42,6 @@ if(mysqli_query($db_connect, $query)) {
 			$team_flag = $row["team_flag"];
 
 			
-			
-			
 			?>
 			<p><img src="../img/<?php echo $team_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $team_name . $game_id . $row["team_id"]; ?></p>
 			<input type="number" gamenr="<?php echo $game_nr; ?>" name="goal_<?php echo $game_id; ?>"  value="<?php echo $goal; ?>"/></br>
