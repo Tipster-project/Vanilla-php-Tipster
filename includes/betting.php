@@ -25,6 +25,7 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away
 		  ) as bets
 		  ON
 		  allGames.game_id = bets.game_id";
+		  // die($query);
 
 		$result = $db_connect->query($query);
 
@@ -54,6 +55,7 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away
 	<button id="check" name="save_bets" value="Spara Bets">spara bets</button>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
+
 $(document).ready(function(){
 	var inputs = $('input[type="number"]').each(function() {
 	    $(this).data('original', this.value);
