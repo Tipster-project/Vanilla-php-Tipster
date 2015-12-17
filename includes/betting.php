@@ -27,7 +27,7 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away
 		  ON
 		  allGames.game_id = bets.game_id";
 
-$result = $db_connect->query($query);
+		$result = $db_connect->query($query);
 
 	?>
 	<form method="post" action="save_bet.php">

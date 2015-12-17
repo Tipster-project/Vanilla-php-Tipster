@@ -12,66 +12,47 @@ for($x = 0; $x < $grouplength; $x++) {
     		<?php echo groupTeams($groups[$x]); ?>
     	</div>
 
-	    <div class="games" style:"width:500px;">
-	    	<div class="home_team" style="float:left;">
-	    		<?php echo homeTeam($groups[$x]); ?>
-	    	
-	    	</div>
-	    	<div class="away_team" style="float:left;";>
-	    		<?php echo awayTeam($groups[$x]); ?>
-	    	</div>
+	    <div class="games">
+			<?php echo games($groups[$x]); ?>	
 	    </div>
 	</div>
 
     <? 
 }
 
-//funktion som hämtar ut hemmalagen
-function homeTeam($groupGames){
+//funktion som hämtar ut matcherna
+function games($groupGames){
 	
 	global $db_connect;
-	$query = "SELECT teams.*, games.* 
-				FROM games 
-				LEFT JOIN teams on games.team_name = teams.team_name 
-				ORDER BY game_number";
+	$query = "SELECT T1.team_name as team_home, T2.team_name as team_away, 
+	  				T1.team_flag as home_flag, T2.team_flag as away_flag, 
+	  				T1.group_nr as home_team_number, T2.group_nr as away_team_number, 
+	  				game_match.*
+					FROM game_match, teams T1, teams T2
+					WHERE T1.team_id=game_match.home_team AND T2.team_id=game_match.away_team ";
 
 	$result = mysqli_query($db_connect, $query);
 	
-	while($row = $result->fetch_assoc()){
-		if ( "{$row['group_nr']}" == $groupGames && "{$row['home_team']}" == 'true'){
-			?>
-			<?php echo "{$row['game_date']}" . " " . "{$row['game_time']}" . " " ."{$row['team_name']}"; ?>
-			<img style='width:30px', 'height:30px' src="img/<?php echo "{$row['team_flag']}"; ?>" />VS
-		</br>
-			<?
-				
-		}
+	while($row = mysqli_fetch_assoc($result)){
+
+		// print_r($row);
+		$game_id = $row["game_id"];
+		$group_nr = $row["home_team_number"];
+		$home_name = $row["team_home"];
+		$away_name = $row["team_away"];
+		$home_flag = $row["home_flag"];
+		$away_flag = $row["away_flag"];
+		$game_start = $row['game_start'];
+		
+
+		if ( $group_nr == $groupGames){
+		echo $game_start . $home_name; ?>
+		<img src="img/<? echo $home_flag; ?> "> VS 
+		<img src="img/<? echo $away_flag; ?>"><? echo $away_name; ?></br><?
+		}				
 	}
 }
 
-//funktion som hämtar ut bortalagen
-function awayTeam($groupGames){
-	
-	global $db_connect;
-	$query = "SELECT teams.*, games.* 
-				FROM games 
-				LEFT JOIN teams on games.team_name = teams.team_name 
-				ORDER BY game_number";
-
-	$result = mysqli_query($db_connect, $query);
-	
-	while($row = $result->fetch_assoc()){
-		if ( "{$row['group_nr']}" == $groupGames  && "{$row['home_team']}" == 'false'){
-
-			?>
-			<img style='width:30px', 'height:30px' src="img/<?php echo "{$row['team_flag']}"; ?>" />
-			<?php echo "{$row['team_name']}"; ?>
-			</br>
-			<?
-				
-		}
-	}
-}
 
 
 //function that prints out every group ordered by letter
@@ -82,7 +63,7 @@ function groupTeams($teamGroup){
 	$result = mysqli_query($db_connect, $query);
 	?>
 
-	<h1 style="padding-top:80px">Group <?php echo $teamGroup; ?></h1>
+	<h1>Group <?php echo $teamGroup; ?></h1>
 	<table style="border:solid black 1px">
 		<tbody>
 			<tr>
