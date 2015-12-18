@@ -1,12 +1,8 @@
-<html>
-<head>
-	<title>User Registration</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="ajax.js"></script>
-<body>
+<?php include 'includes/header.php'; ?>
+<script src="js/ajax.js"></script>
+
 	<div id="main-wrapper">
-		<form id="registrationform" action="reg.php" method="post">
+		<form id="registrationform" action="reg_user.php" method="post">
 
 			<label>Username</label><br>
 			<input type="text" id="uName" name="username">
@@ -33,5 +29,3 @@
 
 		</form>
 	</div>
-</body>
-</html>

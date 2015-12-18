@@ -1,4 +1,5 @@
-$(document).ready(function(e) {
+
+    console.log('blä');
     //hides all the images
     $('.hideImg').hide();
     // This function will check if the value of the input in username is allready in the database. this is triggerd when the focus on the input field is lost. 
@@ -74,85 +75,6 @@ $(document).ready(function(e) {
         }
     });
 
-    //Checks if ti only letters as value of the input.
-    $('#fName').blur(function(){
-        var inputVal = $(this).val();
-        //fNameCheck gets Regexp rules with is that only letter are allowed.
-        var fNameCheck = /^[A-Za-z]+$/;
-        //if the inputs value i empty it will output a error message and en error icon. It will also remove the attribute correct if it has been given.
-        if(inputVal == ''){
-            $('#fchecked').hide();
-            $('#funchecked').fadeIn('slow');
-            $('#fNameMsg').text('This field needs to be filled out.');
-            $(this).removeAttr('correct');
-        //Runs the rules of fNameCheck to the value of inputVal. if it does not match the rules it will give an error message
-        //and puts out an error icon. It will remove the attribute correct if it has been given.
-        }else if(!fNameCheck.test(inputVal)){
-            $('#fchecked').hide();
-            $('#funchecked').fadeIn('slow');
-            $('#fNameMsg').text('Only letters are allowed.');
-             $(this).removeAttr('correct');
-        //if inputVal matches the rules it will put out the correct icon and give it the attribute correct. 
-        }else{
-            $('#funchecked').hide();
-            $('#fchecked').fadeIn('slow');
-            $('#fNameMsg').html('&nbsp;');
-            $(this).attr('correct', 'correct');
-        }
-    });
-
-    //Last Name check.
-    $('#lName').blur(function(){
-        var inputVal = $(this).val();
-        //lNameCheck gets Regexp rules with is that only letter are allowed.
-        var lNameCheck = /^[A-Za-z]+$/;
-        //if the inputs value i empty it will output a error message and en error icon. It will also remove the attribute correct if it has been given.
-        if(inputVal == ''){
-            $('#lchecked').hide();
-            $('#lunchecked').fadeIn('slow');
-            $('#lNameMsg').text('This field needs to be filled out.');
-            $(this).removeAttr('correct');
-        //if inputVal matches the rules it will put out the correct icon and give it the attribute correct. 
-        }else if(!lNameCheck.test(inputVal)){
-            $('#lchecked').hide();
-            $('#lunchecked').fadeIn('slow');
-            $('#lNameMsg').text('Only letters are allowed.');
-            $(this).removeAttr('correct');
-         //if inputVal matches the rules it will put out the correct icon and give it the attribute correct. 
-        }else{
-            $('#lunchecked').hide();
-            $('#lchecked').fadeIn('slow');
-            $('#lNameMsg').html('&nbsp;');
-            $(this).attr('correct', 'correct');
-        }
-    });
-
-    //Checks if the it is only number as value in the input.
-    $('#phoneNumber').blur(function(){ 
-        var inputVal = $(this).val();
-        //numberCheck gets Regexp rules with is that only numbers are allowed.
-        var numberCheck = /^\d*[0-9](|.\d*[0-9]|,\d*[0-9])?$/;
-        //if the inputs value i empty it will output a error message and en error icon. It will also remove the attribute correct if it has been given.
-        if(inputVal == ''){
-            $('#pchecked').hide();
-            $('#punchecked').fadeIn('slow');
-            $('#phoneMsg').text('This field needs to filled out');
-            $(this).removeAttr('correct');
-        //Runs the rules of numberCheck to the value of inputVal. if it does not match the rules it will give an error message
-        //and puts out an error icon. It will remove the attribute correct if it has been given.
-        }else if(!numberCheck.test(inputVal)){
-            $('#pchecked').hide();
-            $('#punchecked').fadeIn('slow');
-            $('#phoneMsg').text('please enter a valid phone number.');
-            $(this).removeAttr('correct');
-        //if inputVal matches the rules it will put out the correct icon and give it the attribute correct.
-        }else{
-            $('#punchecked').hide();
-            $('#pchecked').fadeIn('slow');
-             $('#phoneMsg').html('&nbsp;');
-            $(this).attr('correct', 'correct');
-        }
-    });
 
     //Checks if it is a valid email adress that has been given.
     $('#email').blur(function(){
@@ -192,4 +114,3 @@ $(document).ready(function(e) {
     });
 
   
-});

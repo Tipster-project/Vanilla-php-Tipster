@@ -8,6 +8,10 @@
 <head>
 	<meta charset='utf-8'>
 	<title>Tipster</title>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+
 </head>
 <body>	
 	<div id='login'>
@@ -20,7 +24,9 @@
 			<a href="logout.php">Logga ut</a>
 			User: <?php echo $_SESSION['user_name']; ?>
 
-		<?php }else{?>
+		<?php }
+
+		else{?>
 			<form action='login_check.php' method='post'>
 				<input type='text' name='login_email' placeholder='Email'>
 				<input type='text' name='login_password' placeholder='Password'>
@@ -29,3 +35,4 @@
 		<?php } ?>
 
 	</div><!-- #login -->
+	

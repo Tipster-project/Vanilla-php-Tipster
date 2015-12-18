@@ -6,7 +6,7 @@ Returns:
 	0 - Username available
 	-1 - Wrong request
 **/
-include '../includes/db_connect.php';
+include 'includes/db_connect.php';
 //Checks first if $_POST['username'] exists and if it exists if it has a value and in that case gives it do $username.
 if(isset($_POST['username']) && $username = $_POST['username']){
 	//Checks if the the value of $username is allready saved in the database with a mysqli query.
