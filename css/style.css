@@ -354,53 +354,119 @@ td,
 th {
   padding: 0; }
 
-.field {
-  background-color: grey;
-  height: 500px; }
-  .field p {
-    margin: 0 auto;
-    font-size: 50px; }
+/* ********************************************* */
+/* ***************    BASICS    **************** */
+/* ********************************************* */
+body {
+  font-family: 'Oswald', sans-serif; }
 
-.registrate {
-  width: 300px;
-  height: 100px;
-  border-radius: 20px;
-  background-color: red; }
-  .registrate a {
-    margin: 0 auto;
-    color: black;
-    padding-left: 40px; }
+a {
+  color: black; }
 
-#main-wrapper {
-  width: 300px;
-  height: 600px;
-  border: 2px solid black;
+button {
+  width: 200px;
+  height: 50px;
   border-radius: 10px;
-  margin-right: auto;
-  margin-left: auto; }
+  background-color: #b7ec60;
+  color: black; }
 
-#registrationform {
-  padding-left: 10px;
-  padding-top: 10px; }
+h1 {
+  font-size: 40px; }
 
-.picture {
-  float: right;
-  margin-right: 20px; }
+h3 {
+  color: #00987f; }
 
-img {
-  width: 20px;
-  height: 20px; }
+.flag {
+  width: 30px;
+  height: 30px; }
 
-#success {
-  margin-right: auto;
-  margin-left: auto;
-  width: 500px;
-  height: 420px;
+/* ********************************************* */
+/* ***************    INDEX     **************** */
+/* ********************************************* */
+.logo {
+  width: 300px; }
+
+.field {
+  background-image: url(../img/game.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px; }
+  .field .get_in {
+    background-color: white;
+    border: 3px solid #00987f;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 10px; }
+    .field .get_in #login, .field .get_in .registrate {
+      padding-top: 20px;
+      text-align: center; }
+    .field .get_in input {
+      margin: 0 auto; }
+    .field .get_in .registrate_button {
+      margin-bottom: 15px; }
+    .field .get_in .login_button {
+      margin-top: 10px; }
+
+.info {
   text-align: center;
-  padding-top: 80px;
-  font-size: 50px;
-  position: center;
-  border: 30px solid #83bd2d;
-  border-radius: 100%; }
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
+  background: #02aaad;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */ }
+
+/* ********************************************* */
+/* **********    REGISTRATE MODAL    *********** */
+/* ********************************************* */
+#myModal {
+  padding-top: 100px; }
+  #myModal #main-wrapper #registrationform {
+    padding: 30px; }
+  #myModal #main-wrapper img {
+    width: 20px;
+    height: 20px; }
+  #myModal #main-wrapper .picture {
+    float: right;
+    margin-right: 20px; }
+
+@media screen and (min-width: 200px) and (max-width: 767px) {
+  .logo {
+    text-align: center;
+    padding-bottom: 5px;
+    margin: 0 auto; }
+    .logo img {
+      width: 70%; }
+
+  .field {
+    background-image: url(../img/gameMob.png); }
+    .field .get_in {
+      position: absolute;
+      bottom: 20px; }
+
+  .info {
+    overflow: hidden; }
+
+  .games {
+    text-align: center; } }
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .get_in {
+    position: absolute;
+    bottom: 20px; }
+
+  .info {
+    overflow: hidden; } }
+@media screen and (min-width: 992px) {
+  .get_in {
+    right: 10px;
+    bottom: 20px; }
+
+  .registrate button {
+    height: 110px; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,25 @@
+.logo {
+	text-align: center;
+	padding-bottom: 5px;
+	margin: 0 auto;
+
+	img {
+		width: 70%;
+	}
+}
+.field {
+	background-image: url(../img/gameMob.png);
+	
+	.get_in {
+		position: absolute;
+		bottom: 20px;
+	}
+}
+
+.info {
+	overflow:hidden;
+}
+
+.games {
+	text-align:center;
+}

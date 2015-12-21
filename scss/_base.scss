@@ -1,64 +1,109 @@
-.field {
-	// background-image: url(../img/fans.jpeg);
-	// background-repeat:no-repeat;
-	// background-size: cover;
-	// height:500px;
-	// width: 100%;
-	// overflow:hidden;
-	background-color: grey;
-	height: 500px;
+/* ********************************************* */
+/* ***************    BASICS    **************** */
+/* ********************************************* */
 
-	p {
-		margin: 0 auto;
-		font-size: 50px;
-		// color: red;
-	}
-
+body {
+	font-family: 'Oswald', sans-serif;
+	//font-family: 'Lato', sans-serif;
+	//font-family: 'Titillium Web', sans-serif;
 }
 
-.registrate {
-	width: 300px;
-	height: 100px;
-	border-radius: 20px;
-	background-color: red;
-
-	a {
-		margin: 0 auto;
-		color: black;
-		padding-left: 40px;
-
-	}	
+a {
+	color: black;
 }
 
-#main-wrapper{
-	width: 300px;
-	height: 600px;
-	border: 2px solid black;
+button {
+	width: 200px;
+	height: 50px;
 	border-radius: 10px;
-	margin-right: auto;
-	margin-left: auto;
+	background-color: $green;
+	//background-color: #7F476B;
+	color: black;		
 }
-#registrationform{
-	padding-left: 10px;
-	padding-top: 10px;
+h1 {
+	font-size: 40px;
 }
-.picture{
-	float: right;
-	margin-right: 20px;
+
+h3 {
+	color: $petrol;
 }
-img{
-	width: 20px;
-	height: 20px;
+
+.flag {
+	width: 30px;
+	height: 30px;
 }
-#success{
-	margin-right: auto;
-	margin-left: auto;
-	width: 500px;
-	height: 420px;
-	text-align: center;
-	padding-top: 80px;
-	font-size: 50px;
-	position: center;
-	border: 30px solid #83bd2d;
-	border-radius: 100%;
+
+/* ********************************************* */
+/* ***************    INDEX     **************** */
+/* ********************************************* */
+
+.logo {
+	width: 300px;
 }
+
+.field {
+	background-image: url(../img/game.png);
+	background-repeat:no-repeat;
+	background-size: cover;
+	height:600px;
+
+	.get_in {
+		background-color: rgba(255,255,255,1);
+		border: 3px solid $petrol;
+		border-radius: 20px;
+		position:absolute;
+		bottom: 10px;	
+
+		#login, .registrate {
+			padding-top: 20px;
+			text-align:center;
+		}
+
+		input {
+			margin: 0 auto;
+		}
+
+		.registrate_button {
+			margin-bottom: 15px;
+		}	
+
+		.login_button {
+			margin-top: 10px;
+		}
+	}
+}
+
+.info {
+	text-align:center;
+
+	 //background-color:$petrol;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
+background: #02aaad; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+
+/* ********************************************* */
+/* **********    REGISTRATE MODAL    *********** */
+/* ********************************************* */
+#myModal{
+	padding-top:100px;
+ #main-wrapper{
+	#registrationform{
+		padding:30px;
+	}
+	img {
+		width: 20px;
+		height: 20px;
+	}
+	.picture{
+		float: right;
+		margin-right: 20px;
+	}
+ }
+}
+

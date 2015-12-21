@@ -1,32 +1,44 @@
 <?php 
 	include 'includes/header.php'; 
-?>
+?>	<div class="logo">
+		<!-- <img src="img/logo.png" alt=""> -->
+	</div>
+	
 	<div class="container-fluid">
 		<div class="row">
+
+			<!-- <p class="col-sm-12">Tipster</p> -->
 			<div class="field col-md-12">
-				<p>Tipster</p>
-				<div id='login'>
-					
-						<form action='login_check.php' method='post'>
-							<input type='text' name='login_email' placeholder='Email'>
-							<input type='text' name='login_password' placeholder='Password'>
-							<input type='submit' name='login_btn' value='Login'>
-						</form>	
-					
+				<div class="get_in col-sm-6 col-xs-11">
 
-				</div><!-- #login -->
-				<div class="registrate">
+					<!-- LOGGA IN -->
+					<div id='login' class="col-sm-12 col-md-6">
+							<form action='login_check.php' method='post'>
+								<input type='text' name='login_email' placeholder='Email'></br>
+								<input type='text' name='login_password' placeholder='Password'></br>
+								<button type='submit' name='login_btn' value='Login' class="login_button">Logga in</button>
+							</form>	
+					</div><!-- #login -->
+
+					<!-- REGISTRERA -->
 					<!-- Trigger the modal with a link -->
-					<a href='reg_index.php' class="link link-info link-lg" data-target="#myModal">Registrera här!</a>
+					<div class="registrate col-sm-12 col-md-6">
+						<a href='reg_index.php' class="link link-info link-lg" data-target="#myModal">
+							<button class="registrate_button">Registrera här!</button>
+						</a>
+					</div>
 
-
-					
-					
-				</div>
+				</div><!-- #get_in -->
 			</div><!-- #field -->
 
-		</div>
-	</div>
+			<!-- INFORMATION -->
+			<div class="info col-md-12">
+				<h1>How it all works!</h1>
+				<p>Tippa med dina vänner, bjud in och gå loss på betten. Bla bla bla...</p>
+			</div>
+
+		</div><!-- #row -->
+	</div><!-- #container-fluid -->
 
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
@@ -54,7 +66,7 @@
 	
 //funktion som hämtar ut dagens matcher
 function games(){
-
+	?><h1>Dagens matcher</h1><?php
 	global $db_connect;
 	$query = "SELECT T1.team_name as team_home, T2.team_name as team_away, 
 	  				T1.team_flag as home_flag, T2.team_flag as away_flag, 
@@ -74,15 +86,22 @@ function games(){
 		$home_flag = $row["home_flag"];
 		$away_flag = $row["away_flag"];
 		$game_start = $row['game_start'];
+
+		
+
 		
 		//kollar om det är någon match idag och skriver ut det
 		if(date('Ymd') == date('Ymd', strtotime($game_start))){
 			?>
-			<h4>Group <?php echo $group_nr; ?></h4>
+			<h3>Group <?php echo $group_nr; ?></h3>
+			<h4>
 			<?php
-			echo $game_start . $home_name; ?>
-			<img src="img/<? echo $home_flag; ?> "> VS 
-			<img src="img/<? echo $away_flag; ?>"><? echo $away_name; ?></br><?
+			echo date("d F H:i", strtotime($game_start));
+			?></h4><h4></br><?php echo $home_name; ?>
+
+			<img src="img/<? echo $home_flag; ?> ">  VS  
+			<img src="img/<? echo $away_flag; ?>"><? echo $away_name; ?></h4
+			></br><?
 		}								
 	}
 }

@@ -47,8 +47,8 @@ function games($groupGames){
 
 		if ( $group_nr == $groupGames){
 		echo $game_start . $home_name; ?>
-		<img src="img/<? echo $home_flag; ?> "> VS 
-		<img src="img/<? echo $away_flag; ?>"><? echo $away_name; ?></br><?
+		<img class="flag" src="img/<? echo $home_flag; ?> "> VS 
+		<img class="flag" src="img/<? echo $away_flag; ?>"><? echo $away_name; ?></br><?
 		}				
 	}
 }
@@ -79,7 +79,7 @@ function groupTeams($teamGroup){
 				if ( "{$row['group_nr']}"  == $teamGroup){
 					?>
 					<tr>
-						<td><img src="img/<?php echo "{$row['team_flag']}"; ?>" /></td>
+						<td><img class="flag" src="img/<?php echo "{$row['team_flag']}"; ?>" /></td>
 						<td><?php echo "{$row['team_name']}"; ?></td>
 						<td><?php echo "{$row['team_points']}"; ?></td>
 					</tr>
