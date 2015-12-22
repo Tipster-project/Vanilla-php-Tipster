@@ -1,7 +1,11 @@
+<?php include 'includes/header.php'; ?>
+
+<div class="1 col-sm-3"></div>
+<div class="2 col-sm-3"></div>
+<div class="3 col-sm-3"></div>
+<div class="4 col-sm-3"></div>
+
 <?php
-include 'includes/header.php'; 
-
-
 $groups= array('A', 'B', 'C', 'D', 'E', 'F');
 
 $grouplength = count($groups);

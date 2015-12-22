@@ -358,7 +358,8 @@ th {
 /* ***************    BASICS    **************** */
 /* ********************************************* */
 body {
-  font-family: 'Oswald', sans-serif; }
+  font-family: 'Oswald', sans-serif;
+  background-color: #fff; }
 
 a {
   color: black; }
@@ -366,8 +367,7 @@ a {
 button {
   width: 200px;
   height: 50px;
-  border-radius: 10px;
-  background-color: #b7ec60;
+  background-color: #e9ea44;
   color: black; }
 
 h1 {
@@ -383,6 +383,26 @@ h3 {
 /* ********************************************* */
 /* ***************    INDEX     **************** */
 /* ********************************************* */
+.navbar {
+  background-color: #00987f; }
+  .navbar li {
+    color: black; }
+  .navbar li:hover {
+    background-color: #ddd; }
+
+.collapsed, .navbar-toggle {
+  width: 50px;
+  padding: 10px 14px; }
+
+.active {
+  background-color: #e9ea44; }
+
+.navbar-right li {
+  background-color: #e9ea44; }
+
+/* ********************************************* */
+/* ***************    INDEX     **************** */
+/* ********************************************* */
 .logo {
   width: 300px; }
 
@@ -394,7 +414,6 @@ h3 {
   .field .get_in {
     background-color: white;
     border: 3px solid #00987f;
-    border-radius: 20px;
     position: absolute;
     bottom: 10px; }
     .field .get_in #login, .field .get_in .registrate {
@@ -421,6 +440,9 @@ h3 {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */ }
 
+.games {
+  text-align: center; }
+
 /* ********************************************* */
 /* **********    REGISTRATE MODAL    *********** */
 /* ********************************************* */
@@ -435,6 +457,67 @@ h3 {
     float: right;
     margin-right: 20px; }
 
+/* ********************************************* */
+/* **************    USER DASH    ************** */
+/* ********************************************* */
+* {
+  margin: 0;
+  padding: 0; }
+
+.tabs {
+  float: none;
+  list-style: none;
+  position: relative;
+  margin: 80px 0 0 10px;
+  text-align: left; }
+  .tabs li {
+    float: left;
+    display: block;
+    width: 33%; }
+  .tabs input[type="radio"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px; }
+  .tabs label {
+    display: block;
+    padding: 14px 21px;
+    cursor: pointer; }
+  .tabs .tab1, .tabs #tab-content1 {
+    background-color: #00987f; }
+  .tabs .tab2, .tabs #tab-content2 {
+    background-color: #e9ea44; }
+  .tabs p {
+    padding: 30px;
+    background-color: white; }
+  .tabs .tab-content {
+    z-index: 2;
+    display: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 25px;
+    position: absolute;
+    top: 52px;
+    left: 0; }
+  .tabs [id^="tab"]:checked + label {
+    top: 0;
+    padding-top: 17px; }
+  .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+    display: block; }
+
+p.link {
+  clear: both;
+  margin: 380px 0 0 15px; }
+  p.link a {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0 5px; }
+    p.link a:hover {
+      background-color: #00987f; }
+
+/* ********** ver2 ************* */
 @media screen and (min-width: 200px) and (max-width: 767px) {
   .logo {
     text-align: center;

@@ -13,11 +13,12 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 		  T2.team_id=game_match.away_team) as allGames
 		  
 		  LEFT OUTER JOIN 
-		  (SELECT * FROM bets
-		  WHERE user_id = $user_id AND
+		  (SELECT * FROM bets WHERE
+		  user_id = $user_id AND
 		  tournament_id = $tournament_id
 		  ) as bets
-		  ON allGames.game_id = bets.game_id";
+		  ON
+		  allGames.game_id = bets.game_id";
 		  // die($query);
 
 		$result = $db_connect->query($query);

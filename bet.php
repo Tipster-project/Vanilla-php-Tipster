@@ -37,7 +37,7 @@ $result = $db_connect->query($query);
 		} 
 		?>
 	</select>
-	<input type="submit" value="Välj turnering">
+	<button type="submit" value="Välj turnering">Välj turnering</button>
 </form>
 
 	<?php      	
