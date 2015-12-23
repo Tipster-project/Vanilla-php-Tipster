@@ -58,7 +58,7 @@
 	</div><!-- myModal -->
 	
 
-<div class="games col-sm-12">
+<div class="gamesIndex col-sm-12">
 	<div class="today col-sm-6">
 		<?php gamesToday(); ?>
 	</div>

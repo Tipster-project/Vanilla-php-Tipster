@@ -378,15 +378,14 @@ h3 {
 
 .flag {
   width: 30px;
-  height: 30px; }
+  height: 30px;
+  margin-top: -5px; }
 
 /* ********************************************* */
-/* ***************    INDEX     **************** */
+/* ****************    MENU     **************** */
 /* ********************************************* */
 .navbar {
   background-color: #00987f; }
-  .navbar li {
-    color: black; }
   .navbar li:hover {
     background-color: #ddd; }
 
@@ -440,7 +439,7 @@ h3 {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */ }
 
-.games {
+.gamesIndex {
   text-align: center; }
 
 /* ********************************************* */
@@ -458,8 +457,39 @@ h3 {
     margin-right: 20px; }
 
 /* ********************************************* */
+/* ************    TEAM GROUPS    ************** */
+/* ********************************************* */
+.group .games {
+  margin-top: -8px; }
+.group h3 {
+  margin-top: 30px;
+  margin-left: 20px;
+  padding-bottom: 10px; }
+.group .time {
+  margin-top: 15px; }
+
+.line {
+  border-bottom: 2px solid #00987f;
+  margin-top: 20px; }
+
+th, td {
+  padding: 5px; }
+
+/* ********************************************* */
+/* ***************    RESULTS   **************** */
+/* ********************************************* */
+.table1 tr:nth-child(odd) {
+  background-color: #EDEDEC; }
+
+/* ********************************************* */
 /* **************    USER DASH    ************** */
 /* ********************************************* */
+.wrapper {
+  background-image: url(../img/game.png);
+  overflow: hidden; }
+  .wrapper h1 {
+    color: #e9ea44; }
+
 * {
   margin: 0;
   padding: 0; }
@@ -517,7 +547,6 @@ p.link {
     p.link a:hover {
       background-color: #00987f; }
 
-/* ********** ver2 ************* */
 @media screen and (min-width: 200px) and (max-width: 767px) {
   .logo {
     text-align: center;
@@ -536,14 +565,23 @@ p.link {
     overflow: hidden; }
 
   .games {
-    text-align: center; } }
+    text-align: center; }
+
+  /* ********************************************* */
+  /* ************    TEAM GROUPS    ************** */
+  /* ********************************************* */
+  .group h3 {
+    margin-top: 10px; } }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .get_in {
     position: absolute;
     bottom: 20px; }
 
   .info {
-    overflow: hidden; } }
+    overflow: hidden; }
+
+  .games {
+    float: left; } }
 @media screen and (min-width: 992px) {
   .get_in {
     right: 10px;

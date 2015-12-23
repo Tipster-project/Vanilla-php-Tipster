@@ -1,28 +1,35 @@
 <?php include 'includes/header.php'; ?>
+<?php include 'includes/menu.php'; ?>
 
-<div class="1 col-sm-3"></div>
-<div class="2 col-sm-3"></div>
-<div class="3 col-sm-3"></div>
-<div class="4 col-sm-3"></div>
-
-<?php
+<div class="container-fluid">
+	<div class="row">
+		<?php
 $groups= array('A', 'B', 'C', 'D', 'E', 'F');
 
 $grouplength = count($groups);
 
 for($x = 0; $x < $grouplength; $x++) {
-	?><div class="group">
-		<div class="tabell">
+	?>
+	<div class="group col-sm-12">
+		<h3>Group <?php echo $groups[$x]; ?></h3>
+		<div class="tabell col-sm-4">
     		<?php echo groupTeams($groups[$x]); ?>
     	</div>
 
-	    <div class="games">
+
+	    <div class="games col-sm-8">
 			<?php echo games($groups[$x]); ?>	
 	    </div>
 	</div>
+	<div class="line col-xs-12"></div>
 
-    <? 
+    <?php
 }
+?>
+	</div><!-- #Container -->
+</div><!-- #row -->
+
+<?php
 
 //funktion som hämtar ut matcherna
 function games($groupGames){
@@ -50,9 +57,20 @@ function games($groupGames){
 		
 
 		if ( $group_nr == $groupGames){
-		echo $game_start . $home_name; ?>
-		<img class="flag" src="img/<? echo $home_flag; ?> "> VS 
-		<img class="flag" src="img/<? echo $away_flag; ?>"><? echo $away_name; ?></br><?
+			?>
+			<table>
+				<tbody>
+					<tr>
+						<td style="width:20%"><?php echo date("d M H:i", strtotime($game_start)); ?></td>
+						<td style="width:25%; text-align:right;"><?php echo $home_name;?></td>
+						<td style="width:10%"><img class="flag" src="img/<? echo $home_flag; ?>" /></td>
+						<td style="width:10%; text-align:center;"> VS </td>
+						<td style="width:10%"><img class="flag" src="img/<? echo $away_flag; ?>" /></td>
+						<td style="width:25%"><?php echo $away_name;?></td>
+					</tr>
+				</tbody>
+			</table>
+		<?php
 		}				
 	}
 }
@@ -67,15 +85,9 @@ function groupTeams($teamGroup){
 	$result = mysqli_query($db_connect, $query);
 	?>
 
-	<h1>Group <?php echo $teamGroup; ?></h1>
-	<table style="border:solid black 1px">
+	
+	<table>
 		<tbody>
-			<tr>
-				<th></th>
-				<th>Team</th>
-				<th>Points</th>
-			</tr>
-
 			<?php
 			//for each row that exist with a specific letter, print table
 			while($row = $result->fetch_assoc()) {

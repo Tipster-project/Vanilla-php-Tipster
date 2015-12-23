@@ -3,7 +3,6 @@ $(document).ready(function(){
 	//click on class link in index.php
 	//MODAL call
 	$('.link').click(function(e) {
- 
 	    // make sure we ignore the browsers default behaviour when clicking an <a>-element
 	    e.preventDefault();
 	   
@@ -29,6 +28,8 @@ $(document).ready(function(){
 			}      
 	    });
   	});
+
+  	
 
   	$('li').click(function(){
   		$(this).addClass('active');
