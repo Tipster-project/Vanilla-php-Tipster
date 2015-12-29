@@ -23,10 +23,6 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 
 		$result = $db_connect->query($query);
 
-	?>
-	<form method="post" action="">
-		<?php
-
 		while($row = mysqli_fetch_assoc($result)) {
 
 			$game_id = $row["game_id"];
@@ -36,35 +32,73 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 			$away_flag = $row["away_flag"];
 			$goal_home = $row["goal_home"];
 			$goal_away = $row["goal_away"];
-
 			
 			?>
-			<p><?php echo ' ' . $home_name. ''; ?><img class="flag" src="../img/<?php echo $home_flag ?>"/> VS <img class="flag" src="../img/<?php echo $away_flag ?>"/><?php echo ' ' . $away_name. ''; ?><input type="number" name="home_goal[]" value="<?php echo $goal_home; ?>" /> - <input type="number" name="away_goal[]" value="<?php echo $goal_away; ?>"/></p>
-			<input type="hidden" name="tournament_id" value="<?php echo $tournament_id; ?>" />
-			<input type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /></br>
-			<?php
-		}
-		?>
-	</form>
+
+			<div class="bet_boxes">
+				<p>
+					<?php echo ' ' . $home_name. ''; ?><img src="../img/<?php echo $home_flag ?>" style="width:30px", "height:30px"/> VS 
+					<img src="../img/<?php echo $away_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $away_name. ''; ?>
+					<input class="goal_home" original="<?php echo $goal_home; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_home; ?>" /> - 
+					<input class="goal_away" original="<?php echo $goal_away; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_away; ?>"/>
+				</p>
+				<p class="error">
+					du har fel...
+				</p>
+				<input class="game_id" type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /></br>
+			</div>
+
+		<?php } ?>
+
 	<button id="check" name="save_bets" value="Spara Bets">spara bets</button>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 
 $(document).ready(function(){
-	var inputs = $('input[type="number"]').each(function() {
-	    $(this).data('original', this.value);
-	});
 
+	$('.error').hide();
+
+	var post_values = [];
+
+	//loops trough all the input values again and and matches them with the old ones 'variabel inputs' to se if any have changed.
+	function check_values(){
+		post_values = [];
+		$('.bet_boxes').each(function() {
+
+			var game_id = $(this).children('input.game_id');
+			var goal_home = $(this).children('p').children('input.goal_home');
+			var goal_away = $(this).children('p').children('input.goal_away');
+
+
+			if(goal_home.attr('original') !== goal_home.val() || goal_away.attr('original') !== goal_away.val()){
+				if (goal_home.val() == '' || goal_away.val() == '') {
+					$(this).children('p.error').show();
+				}else{
+					$(this).children('p.error').hide();
+					var post_value = {game_id:game_id.val(), goal_home:goal_home.val(), goal_away:goal_away.val()};
+					post_values.push(post_value);
+				}
+			}
+
+	    });
+	}
 
 	$('#check').click(function(){
-	    inputs.each(function() {
-	        if ($(this).data('original') !== this.value) {
-	            alert(this + 'has changed');
-	        } else {
-	           //Do nothing
-	        }
-	    });
+	    check_values();
+	    if(post_values.length > 0) {
+		    $.ajax({
+		        type:"post",
+		        url:"save_bet.php",
+		        data:"tournament_id=<?php echo $tournament_id;?>&bets="+JSON.stringify(post_values),
+		        	success:function(data){
+		        		alert("Succes, " + data);
+		        	}
+	   		});
+		}
+
 	});
+
+	
 });
 
 </script>
