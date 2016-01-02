@@ -38,9 +38,7 @@
 		<!-- REGISTERING AV RESULTAT -->
 		<div class="result_reg col-sm-12">
 			<h1>Registrate results</h1>
-			<form method="post" action="save_result">
-				<table class="table1 col-sm-12">
-					<tbody>
+			
 					<?php
 					$query = "SELECT allGames.*, results.goal_home, results.goal_away FROM
 							  (SELECT T1.team_name as team_home, T2.team_name as team_away, 
@@ -53,6 +51,9 @@
 							  (SELECT * FROM results) as results
 							  ON allGames.game_id = results.game_id";
 
+				
+
+
 					$result = $db_connect->query($query);
 
 					while($row = mysqli_fetch_assoc($result)) {
@@ -64,29 +65,33 @@
 						$away_flag = $row["away_flag"];
 						$goal_home = $row["goal_home"];
 						$goal_away = $row["goal_away"];
-
 						
 						?>
+						<form method="post" action="includes/save_result.php">
+				<table class="table1 col-sm-12">
+					<tbody>
 						<tr>
 							<td style="width:25%; text-align:right;"><?php echo $home_name;?></td>
 							<td style="width:10%; text-align:center;"><img class="flag" src="img/<? echo $home_flag; ?>" /></td>
-							<td style="width:10%; text-align:center;"> VS </td>
+							<td style="width:10%; text-align:center;"> VS 
+								<input type="hidden" name="game_id" value="<?php echo $game_id; ?>"></td>
 							<td style="width:10%; text-align:center;"><img class="flag" src="img/<? echo $away_flag; ?>" /></td>
 							<td style="width:25%"><?php echo $away_name;?></td>
-							<td><input type="number" name="home_goal[]" value="<?php echo $goal_home; ?>" /></td>
+							<td><input type="number" name="home_goal" value="<?php echo $goal_home; ?>" /></td>
 							<td>-</td>
-							<td><input type="number" name="away_goal[]" value="<?php echo $goal_away; ?>"/></td>
+							<td><input type="number" name="away_goal" value="<?php echo $goal_away; ?>"/></td>
+							<td><input type='submit' style="float:right;" id="check" name="save_result" value="Spara"/></td>
 						</tr>
-
-						
+					</tbody>
+				</table>
+				
+			</form>
 						<?php
 					}
 					?>
-					</tbody>
-				</table>
-			</form>
-			<button style="float:right;" id="check" name="save_result" value="Spara Resultat">Spara Resultat</button>
-		</div>
+					
+			
+		</div><!-- result_reg -->
 
 	</div><!-- #row -->
 </div><!-- #container -->
