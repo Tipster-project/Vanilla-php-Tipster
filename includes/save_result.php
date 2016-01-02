@@ -6,8 +6,6 @@ $away_goal = $_POST['away_goal'];
 
 $result = mysqli_query($db_connect, "SELECT * FROM results WHERE game_id = $game_id ");
 
-
-
 if($result->num_rows > 0) {
     mysqli_query($db_connect, "UPDATE results SET goal_home = '$home_goal', goal_away = '$away_goal' WHERE game_id = '$game_id' ");
     header("Location: ../admin_dash.php");
