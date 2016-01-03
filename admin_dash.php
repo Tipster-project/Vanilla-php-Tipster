@@ -34,7 +34,36 @@
 				<input type='submit' name='game_reg_btn' value='Registrate'>
 			</form>	
 		</div> -->
-		
+		<!-- REGISTERING AV VINNARE -->
+
+				
+		<?php
+		$query1 = "SELECT team_name, team_id FROM teams";
+		$result1 = $db_connect->query($query1);
+		?>
+		<div class="result_winner col-sm-12">
+			<h1>Registrate winner</h1>
+			<form action="includes/save_extra_result.php" method="post">
+				<label for="player">Målkung:</label></br>
+				<input type="text" name="player" /></br>
+
+				<label for="winning_team">EM-vinnare 2016:</label></br>
+				<select name="selected_team"> 
+					<?php
+					while($row = mysqli_fetch_assoc($result1)) { 
+						?>
+						<option value="<?php echo $row['team_id']; ?>"><?php echo $row['team_name']; ?></option>
+					<?php 
+					} 
+					?>
+				</select></br>
+				<input type="submit" value="Spara"/>
+				<input type="hidden" name="tournament" value="<?php echo $tournament_id; ?>" />
+			</form>	
+		</div>
+
+
+
 		<!-- REGISTERING AV RESULTAT -->
 		<div class="result_reg col-sm-12">
 			<h1>Registrate results</h1>
@@ -49,10 +78,8 @@
 							  
 							  LEFT OUTER JOIN 
 							  (SELECT * FROM results) as results
-							  ON allGames.game_id = results.game_id";
-
-				
-
+							  ON allGames.game_id = results.game_id
+							  ORDER BY allGames.game_id";
 
 					$result = $db_connect->query($query);
 
@@ -80,7 +107,7 @@
 							<td><input type="number" name="home_goal" value="<?php echo $goal_home; ?>" /></td>
 							<td>-</td>
 							<td><input type="number" name="away_goal" value="<?php echo $goal_away; ?>"/></td>
-							<td><input type='submit' style="float:right;" id="check" name="save_result" value="Spara"/></td>
+							<td><input type='submit' style="float:right;" id="<?php echo $game_id ?>" name="save_result" value="Spara"/></td>
 						</tr>
 					</tbody>
 				</table>

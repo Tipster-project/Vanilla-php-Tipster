@@ -3,8 +3,33 @@ session_start();
 $tournament_id = $_POST["selected_tournament"];
 $user_id = $_SESSION["user_id"];
 
+/* REGISTRERING AV SLUTVINNARE OCH SKYTTEKUNG */
+$query1 = "SELECT team_name, team_id FROM teams";
+$result1 = $db_connect->query($query1);
+?>
+<div class="extra_bet_box">
+	<form action="save_extra_bet.php" method="post">
+		<label for="player">Målkung:</label></br>
+		<input type="text" name="player" /></br>
+
+		<label for="winning_team">EM-vinnare 2016:</label></br>
+		<select name="selected_team"> 
+			<?php
+			while($row = mysqli_fetch_assoc($result1)) { 
+				?>
+				<option value="<?php echo $row['team_id']; ?>"><?php echo $row['team_name']; ?></option>
+			<?php 
+			} 
+			?>
+		</select></br>
+		<input type="submit" value="Spara"/>
+		<input type="hidden" name="tournament" value="<?php echo $tournament_id; ?>" />
+	</form>	
+</div>
+<?php
 
 
+/* REGISTRERING AV RESULTAT */
 $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 		  (SELECT T1.team_name as team_home, T2.team_name as team_away, 
 		  		T1.team_flag as home_flag, T2.team_flag as away_flag, game_match.* 
