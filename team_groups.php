@@ -81,7 +81,7 @@ function games($groupGames){
 function groupTeams($teamGroup){
 	global $db_connect;
 
-	$query = 'SELECT * FROM teams ORDER BY team_points DESC';
+	$query = 'SELECT * FROM teams';
 	$result = mysqli_query($db_connect, $query);
 	?>
 
@@ -97,7 +97,9 @@ function groupTeams($teamGroup){
 					<tr>
 						<td><img class="flag" src="img/<?php echo "{$row['team_flag']}"; ?>" /></td>
 						<td><?php echo "{$row['team_name']}"; ?></td>
-						<td><?php echo "{$row['team_points']}"; ?></td>
+						
+						<!-- hämtar funktionen som räknar ut lagpoängen -->
+						<td><?php echo teamPoints("{$row['team_id']}"); ?></td>
 					</tr>
 					<?php
 				}
@@ -106,6 +108,41 @@ function groupTeams($teamGroup){
 		</tbody>
 	</table>
 <?php
+}
+
+
+function teamPoints($team_id) {
+	global $db_connect;
+	$points = 0;
+
+	//hämtar all info från game_match och results.
+	//Vill ha alla matchers resultat för att kunna räkna ut hur många poäng varje lag har.
+	$query = "SELECT game_match.*, results.* FROM game_match 
+			RIGHT JOIN results
+			ON results.game_id = game_match.game_id
+			WHERE home_team = $team_id OR away_team = $team_id";
+
+  	$result = $db_connect->query($query);
+  	//var_dump($result);
+  	while ($row = mysqli_fetch_assoc($result)) {
+
+  		if($row["home_team"] == $team_id) {
+  			if($row["goal_home"] > $row["goal_away"]){
+  				$points = $points +3;
+  			}
+  		}
+  		else if ($row["away_team"] == $team_id){
+  			if($row["goal_away"] > $row["goal_home"]){
+  				$points = $points +3;
+  			}
+  		}
+  		
+  		if($row["goal_away"] == $row["goal_home"]){
+  			$points = $points +1;
+  		}
+  	}
+  	
+  	return $points;
 }
 ?>
 	
