@@ -148,7 +148,7 @@ function gamesTomorrow(){
 			?></h4><h4></br><?php echo $home_name; ?>
 			<img src="img/<?php echo $home_flag; ?> ">  VS  
 			<img src="img/<?php echo $away_flag; ?>"><?php echo $away_name; ?></h4
-			></br><?
+			></br><?php
 		}								
 	}
 }
