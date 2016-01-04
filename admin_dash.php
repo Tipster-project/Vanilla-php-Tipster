@@ -99,10 +99,10 @@
 					<tbody>
 						<tr>
 							<td style="width:25%; text-align:right;"><?php echo $home_name;?></td>
-							<td style="width:10%; text-align:center;"><img class="flag" src="img/<? echo $home_flag; ?>" /></td>
+							<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
 							<td style="width:10%; text-align:center;"> VS 
 								<input type="hidden" name="game_id" value="<?php echo $game_id; ?>"></td>
-							<td style="width:10%; text-align:center;"><img class="flag" src="img/<? echo $away_flag; ?>" /></td>
+							<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" /></td>
 							<td style="width:25%"><?php echo $away_name;?></td>
 							<td><input type="number" name="home_goal" value="<?php echo $goal_home; ?>" /></td>
 							<td>-</td>

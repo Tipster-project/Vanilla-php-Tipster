@@ -63,9 +63,9 @@ function games($groupGames){
 					<tr>
 						<td style="width:20%"><?php echo date("d M H:i", strtotime($game_start)); ?></td>
 						<td style="width:25%; text-align:right;"><?php echo $home_name;?></td>
-						<td style="width:10%"><img class="flag" src="img/<? echo $home_flag; ?>" /></td>
+						<td style="width:10%"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
 						<td style="width:10%; text-align:center;"> VS </td>
-						<td style="width:10%"><img class="flag" src="img/<? echo $away_flag; ?>" /></td>
+						<td style="width:10%"><img class="flag" src="img/<?php echo $away_flag; ?>" /></td>
 						<td style="width:25%"><?php echo $away_name;?></td>
 					</tr>
 				</tbody>

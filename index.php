@@ -105,9 +105,9 @@ function gamesToday(){
 			echo date("d F H:i", strtotime($game_start));
 			?></h4><h4></br><?php echo $home_name; ?>
 
-			<img src="img/<? echo $home_flag; ?> ">  VS  
-			<img src="img/<? echo $away_flag; ?>"><? echo $away_name; ?></h4
-			></br><?
+			<img src="img/<?php echo $home_flag; ?> ">  VS  
+			<img src="img/<?php echo $away_flag; ?>"><?php echo $away_name; ?></h4
+			></br><?php
 		}							
 	}
 }
@@ -146,8 +146,8 @@ function gamesTomorrow(){
 			<?php
 			echo date("d F H:i", strtotime($game_start));
 			?></h4><h4></br><?php echo $home_name; ?>
-			<img src="img/<? echo $home_flag; ?> ">  VS  
-			<img src="img/<? echo $away_flag; ?>"><? echo $away_name; ?></h4
+			<img src="img/<?php echo $home_flag; ?> ">  VS  
+			<img src="img/<?php echo $away_flag; ?>"><?php echo $away_name; ?></h4
 			></br><?
 		}								
 	}
