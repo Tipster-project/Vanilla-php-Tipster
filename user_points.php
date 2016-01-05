@@ -10,7 +10,7 @@ function userTournaments() {
 	global $db_connect;
 	$tournament_id = $_GET['group'];
 
-	$query = "SELECT * from user_tournaments WHERE tournament_id = $tournament_id ORDER BY user_points ASC";
+	$query = "SELECT * from user_tournaments WHERE tournament_id = $tournament_id ORDER BY user_points DESC";
 	$result = mysqli_query($db_connect, $query);
 	?>
 	<table>
@@ -24,7 +24,7 @@ function userTournaments() {
 					<tr>
 						<td><?php echo "{$row['user_name']}"; ?></td>
 						<!-- hämtar funktionen som räknar ut lagpoängen -->
-						<td><?php echo "{$row['user_points']}"; ?></td>
+						<td><?php echo userPoints("{$row['user_id']}"); ?></td>
 					</tr>
 					<?php
 				}
