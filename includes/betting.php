@@ -43,8 +43,8 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 		  user_id = $user_id AND
 		  tournament_id = $tournament_id
 		  ) as bets
-		  ON
-		  allGames.game_id = bets.game_id";
+		  ON allGames.game_id = bets.game_id
+		  ORDER BY allGames.game_id";
 		  // die($query);
 
 		$result = $db_connect->query($query);
