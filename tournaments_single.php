@@ -13,11 +13,9 @@ The other thing is that we get the scores from the users and sort them out with 
 	// Checks if the $_GET variabel and the user_id $_SESSION is set
 	if(isset($_GET['tour_id']) && isset($_SESSION['user_id'])){
 		//Then se if there is a tournament with the same name as in the $_GET variabel.
-<<<<<<< Updated upstream
-		$query = "SELECT * FROM tournament WHERE tournament_id = '". $_GET['group'] ."'";
-=======
+
 		$query = "SELECT * FROM tournament WHERE tournament_id = '". $_GET['tour_id'] ."'";
->>>>>>> Stashed changes
+
 		$result = $db_connect->query($query);
 		$row = mysqli_fetch_assoc($result);
 		//If there isent any tournaments with the same name the query result will be NULL. Wich can meen that someone was trying
@@ -38,7 +36,7 @@ The other thing is that we get the scores from the users and sort them out with 
 			$check = mysqli_fetch_row($result);
 			//If there isent a row that matches the two values we will get the result of NULL. 
 			//then the user dosent have premission to the tournament so then the user will get a error message. 
-			if(is_null($check)){
+			if(is_null($row)){
 	
 				echo 'Gruppen du letade efter finns inte eller så har du inte åtkomst. ^User_tournaments check^';
 	
@@ -68,7 +66,7 @@ The other thing is that we get the scores from the users and sort them out with 
 	
 		}
 		
-
+		include 'user_points.php'; 
 	}else{ ?>	
 
 			<div>
@@ -78,5 +76,5 @@ The other thing is that we get the scores from the users and sort them out with 
 
 	<?php } ?>
 
-<?php include 'user_points.php'; ?>
+
 <?php include 'includes/footer.php'; ?>
