@@ -1,72 +1,15 @@
 <?php 
- 	include 'includes/header.php';
-
-?>
-<div class="container">
-	<div class="row">
-		
-		<!-- REGISTERING AV LAG -->
-		<div id='team_reg' class="col-sm-12">
-			<h1>Registrate teams</h1>
-			<form enctype="multipart/form-data" action='team_reg.php' method='post'>
-				<label>Team:</label></br>
-				<input type='text' name='country' placeholder='country'></br>
-				<label>Team-flag:</label>
-				<input type='file' name='country_flag' accept='image/*' multiple></br>
-				<label>Group:</label></br>
-				<input type='text' name='group_reg' placeholder='group'></br>
-				<input type='submit' name='team_reg_btn' value='Registrate'>
-			</form>	
-		</div><!-- #team_reg -->
-
-		<!-- REGISTERING AV MATCHER -->
-<!-- 		<div id='game_reg'>
-			<h1>Registrate games</h1>
-			<form action='game_reg.php' method='post'>
-				<label>Home-team:</label></br>
-				<input type='text' name='home_team' placeholder='home_team'></br>
-				<label>Away-team:</label></br>
-				<input type='text' name='away_team' placeholder='away_team'></br>
-				<label>Game date:</label></br>
-				<input type='date' name='game_date' placeholder='game_date'></br>
-				<label>Game time:</label></br>
-				<input type='time' name='game_time' placeholder='game_time'></br>
-				<input type='submit' name='game_reg_btn' value='Registrate'>
-			</form>	
-		</div> -->
-		<!-- REGISTERING AV VINNARE -->
-
-				
-		<?php
-		$query1 = "SELECT team_name, team_id FROM teams";
-		$result1 = $db_connect->query($query1);
-		?>
-		<div class="result_winner col-sm-12">
-			<h1>Registrate winner</h1>
-			<form action="includes/save_extra_result.php" method="post">
-				<label for="player">Målkung:</label></br>
-				<input type="text" name="player" /></br>
-
-				<label for="winning_team">EM-vinnare 2016:</label></br>
-				<select name="selected_team"> 
-					<?php
-					while($row = mysqli_fetch_assoc($result1)) { 
-						?>
-						<option value="<?php echo $row['team_id']; ?>"><?php echo $row['team_name']; ?></option>
-					<?php 
-					} 
-					?>
-				</select></br>
-				<input type="submit" value="Spara"/>
-				<input type="hidden" name="tournament" value="<?php echo $tournament_id; ?>" />
-			</form>	
-		</div>
+include 'includes/header.php';
+if(!isset($_SESSION['admin_loggedin'])){ ?>
+	<?php include 'includes/menu.php' ?>
+	<h1>You shouldn't be here..... RUN FOREST RUUUUN!!!!</h1>
+	<a href="user_dash.php"><h2>klicka här för att komma tillbaka till din sida, din lilla rackare! ;)!!</h2><a><?php
+}else{ 
+	include 'includes/menu.php';?>
 
 
-
-		<!-- REGISTERING AV RESULTAT -->
-		<div class="result_reg col-sm-12">
-			<h1>Registrate results</h1>
+	<div class="container">
+		<div class="row">
 			
 					<?php
 					$query = "SELECT allGames.*, results.result_goal_home, results.result_goal_away FROM
@@ -116,14 +59,72 @@
 					</tbody>
 				</table>
 				
-			</form>
-						<?php
-					}
-					?>
+			<!-- REGISTERING AV LAG -->
+			<div id='team_reg' class="col-sm-12">
+				<h1>Registrate teams</h1>
+				<form enctype="multipart/form-data" action='team_reg.php' method='post'>
+					<label>Team:</label></br>
+					<input type='text' name='country' placeholder='country'></br>
+					<label>Team-flag:</label>
+					<input type='file' name='country_flag' accept='image/*' multiple></br>
+					<label>Group:</label></br>
+					<input type='text' name='group_reg' placeholder='group'></br>
+					<input type='submit' name='team_reg_btn' value='Registrate'>
+				</form>	
+			</div><!-- #team_reg -->
+	
+			<!-- REGISTERING AV MATCHER -->
+	<!-- 		<div id='game_reg'>
+				<h1>Registrate games</h1>
+				<form action='game_reg.php' method='post'>
+					<label>Home-team:</label></br>
+					<input type='text' name='home_team' placeholder='home_team'></br>
+					<label>Away-team:</label></br>
+					<input type='text' name='away_team' placeholder='away_team'></br>
+					<label>Game date:</label></br>
+					<input type='date' name='game_date' placeholder='game_date'></br>
+					<label>Game time:</label></br>
+					<input type='time' name='game_time' placeholder='game_time'></br>
+					<input type='submit' name='game_reg_btn' value='Registrate'>
+				</form>	
+			</div> -->
+			<!-- REGISTERING AV VINNARE -->
+	
 					
-			
-		</div><!-- result_reg -->
+			<?php
+			$query1 = "SELECT team_name, team_id FROM teams";
+			$result1 = $db_connect->query($query1);
+			?>
+			<div class="result_winner col-sm-12">
+				<h1>Registrate winner</h1>
+				<form action="includes/save_extra_result.php" method="post">
+					<label for="player">Målkung:</label></br>
+					<input type="text" name="player" /></br>
+	
+					<label for="winning_team">EM-vinnare 2016:</label></br>
+					<select name="selected_team"> 
+						<?php
+						while($row = mysqli_fetch_assoc($result1)) { 
+							?>
+							<option value="<?php echo $row['team_id']; ?>"><?php echo $row['team_name']; ?></option>
+						<?php 
+						} 
+						?>
+					</select></br>
+					<input type="submit" value="Spara"/>
+					<input type="hidden" name="tournament" value="<?php echo $tournament_id; ?>" />
+				</form>	
+			</div>
+	
+	
+	
+			<!-- REGISTERING AV RESULTAT -->
+			<div class="result_reg col-sm-12">
+				<h1>Registrate results</h1>
 
-	</div><!-- #row -->
-</div><!-- #container -->
-<?php include 'includes/footer.php'; ?>
+			</div><!-- result_reg -->
+	
+		</div><!-- #row -->
+	</div><!-- #container -->
+	<?php include 'includes/footer.php';
+}?>

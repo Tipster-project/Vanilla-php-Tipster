@@ -1,7 +1,7 @@
 <?php require "db_connect.php";
 session_start();
-$tournament_id = $_POST["selected_tournament"];
 $user_id = $_SESSION["user_id"];
+$tournament_id = $_GET['tour_id'];
 
 /* REGISTRERING AV SLUTVINNARE OCH SKYTTEKUNG */
 $query1 = "SELECT team_name, team_id FROM teams";
@@ -29,6 +29,7 @@ $result1 = $db_connect->query($query1);
 <?php
 
 
+//lägg till _id efter home_team och away_team ^_^!
 /* REGISTRERING AV RESULTAT */
 $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 		  (SELECT T1.team_name as team_home, T2.team_name as team_away, 
@@ -62,8 +63,8 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 
 			<div class="bet_boxes">
 				<p>
-					<?php echo ' ' . $home_name. ''; ?><img src="../img/<?php echo $home_flag ?>" style="width:30px", "height:30px"/> VS 
-					<img src="../img/<?php echo $away_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $away_name. ''; ?>
+					<?php echo ' ' . $home_name. ''; ?><img src="img/<?php echo $home_flag ?>" style="width:30px", "height:30px"/> VS 
+					<img src="img/<?php echo $away_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $away_name. ''; ?>
 					<input class="goal_home" original="<?php echo $goal_home; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_home; ?>" /> - 
 					<input class="goal_away" original="<?php echo $goal_away; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_away; ?>"/>
 				</p>
@@ -113,7 +114,7 @@ $(document).ready(function(){
 	    if(post_values.length > 0) {
 		    $.ajax({
 		        type:"post",
-		        url:"save_bet.php",
+		        url:"includes/save_bet.php",
 		        data:"tournament_id=<?php echo $tournament_id;?>&bets="+JSON.stringify(post_values),
 		        	success:function(data){
 		        		alert("Succes, " + data);

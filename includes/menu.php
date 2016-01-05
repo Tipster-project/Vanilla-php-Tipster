@@ -27,7 +27,11 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="logout.php">Logga Ut</a></li>
+        <?php if(isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin'] == 'true'){ ?>
+          <li>Admin: <?php echo $_SESSION['user_name']; ?></li><li><a href="logout.php">Logga Ut</a></li>
+        <?php }else if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin'] == 'true'){?>
+          <li>User: <?php echo $_SESSION['user_name']; ?></li><li><a href="logout.php">Logga Ut</a></li>
+        <?php }?>  
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

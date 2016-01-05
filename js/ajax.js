@@ -1,5 +1,3 @@
-
-    console.log('blä');
     //hides all the images
     $('.hideImg').hide();
     // This function will check if the value of the input in username is allready in the database. this is triggerd when the focus on the input field is lost. 
@@ -95,22 +93,69 @@
             $('#emailMsg').text('You need to fill out a valid Email adress');
             $(this).removeAttr('correct');
         //if inputVal matches the rules it will put out the correct icon and give it the attribute correct. 
+        }else if($('#email_check').val() !== ''){
+            if($(this).val() !== $('#email_check').val()){
+                $('#echecked').hide();
+                $('#eunchecked').fadeIn('slow');
+                $('#ecchecked').hide();
+                $('#ecunchecked').fadeIn('slow');
+                $('#emailMsg').text('Email adresserna matchar inte :/');
+                $(this).removeAttr('correct');
+                $('#email').removeAttr('correct');
+            }else{
+                $('#eunchecked').hide();
+                $('#echecked').fadeIn('slow');
+                $('#ecunchecked').hide();
+                $('#ecchecked').fadeIn('slow');
+                $('#emailMsg').html('&nbsp;');
+                $(this).attr('correct', 'correct');
+                $('#email').attr('correct', 'correct');
+            }
         }else{
             $('#eunchecked').hide();
             $('#echecked').fadeIn('slow');
-             $('#emailMsg').html('&nbsp;');
-            $(this).attr('correct', 'correct');
+            $('#emailMsg').html('&nbsp;');
         }
     }); 
+
+    $('#email_check').blur(function(){
+        if($(this).val() == ''){
+            $('#echecked').hide();
+            $('#eunchecked').fadeIn('slow');
+            $('#ecchecked').hide();
+            $('#ecunchecked').fadeIn('slow');
+            $('#emailMsg').text('Du måste upprepa din mail adress :/');
+            $(this).removeAttr('correct');
+            $('#email').removeAttr('correct');
+
+        }else if($(this).val() !== $('#email').val()){
+            $('#echecked').hide();
+            $('#eunchecked').fadeIn('slow');
+            $('#ecchecked').hide();
+            $('#ecunchecked').fadeIn('slow');
+            $('#emailMsg').text('Email adresserna matchar inte :/');
+            $(this).removeAttr('correct');
+            $('#email').removeAttr('correct');
+
+        }else{
+            $('#eunchecked').hide();
+            $('#echecked').fadeIn('slow');
+            $('#ecunchecked').hide();
+            $('#ecchecked').fadeIn('slow');
+            $('#emailMsg').html('&nbsp;');
+            $(this).attr('correct', 'correct');
+            $('#email').attr('correct', 'correct');
+        }
+    });
     
     //This function will run when the form is submited.
     $("form#registrationform").submit(function() {
         //it will count allt the inputs that doest have the type submit. it will check if any of the does nor have the attribute correct.
         //if any doesnt have that attribute it will alret a message and return false so it dosent submit.
-        if($(this).find("input[type!='submit'][correct!='correct']").length != 0) {
-            alert('something isent filled out!');
-            return false;
-        }
+    if($(this).find("input[type!='submit'][correct!='correct']").length != 0) {
+        $('#big-message').text('Du verkar ha missat ett fält ^_!');
+        return false;
+    }
     });
 
   

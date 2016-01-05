@@ -11,10 +11,13 @@ The other thing is that we get the scores from the users and sort them out with 
 <?php 
 
 	// Checks if the $_GET variabel and the user_id $_SESSION is set
-	if(isset($_GET['group']) && isset($_SESSION['user_id'])){
-
+	if(isset($_GET['tour_id']) && isset($_SESSION['user_id'])){
 		//Then se if there is a tournament with the same name as in the $_GET variabel.
+<<<<<<< Updated upstream
 		$query = "SELECT * FROM tournament WHERE tournament_id = '". $_GET['group'] ."'";
+=======
+		$query = "SELECT * FROM tournament WHERE tournament_id = '". $_GET['tour_id'] ."'";
+>>>>>>> Stashed changes
 		$result = $db_connect->query($query);
 		$row = mysqli_fetch_assoc($result);
 		//If there isent any tournaments with the same name the query result will be NULL. Wich can meen that someone was trying

@@ -20,12 +20,19 @@
 			
 			<label>Email</label><br>
 			<input type="email" id="email" name="email">
+			<div class="picture"><img src="img/checked.png" class="hideImg" id="echecked"><img src="img/unchecked.png" class="hideImg" id="eunchecked"></div><br>
+
+			<label>Upprepa din email</label><br>
+			<input type="email" id="email_check">
+			<div class="picture"><img src="img/checked.png" class="hideImg" id="ecchecked"><img src="img/unchecked.png" class="hideImg" id="ecunchecked"></div>
+			
 			<!--The div contains the driffrent images that will toggle if the valuse of input is correct or not.-->
-			<div class="picture"><img src="img/checked.png" class="hideImg" id="echecked"><img src="img/unchecked.png" class="hideImg" id="eunchecked"></div>
 			<!--The p tag will contain the error messages for what is wrong with the value in input-->
 			<p id="emailMsg">&nbsp;</p>
 			
 			<input type="submit" id="send" value="Submit">
 
 		</form>
+		<p id="big-message">&nbsp;</p>
+
 	</div>
