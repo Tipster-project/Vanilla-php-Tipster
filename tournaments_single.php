@@ -14,9 +14,11 @@ The other thing is that we get the scores from the users and sort them out with 
 	if(isset($_GET['tour_id']) && isset($_SESSION['user_id'])){
 		//Then se if there is a tournament with the same name as in the $_GET variabel.
 
+
 		$query = "SELECT * FROM tournament WHERE tournament_id = '". $group ."'";
 
 		//$query = "SELECT * FROM tournament WHERE tournament_id = '". $_GET['tour_id'] ."'";
+
 
 		$result = $db_connect->query($query);
 		$row = mysqli_fetch_assoc($result);
@@ -38,7 +40,7 @@ The other thing is that we get the scores from the users and sort them out with 
 			$check = mysqli_fetch_row($result);
 			//If there isent a row that matches the two values we will get the result of NULL. 
 			//then the user dosent have premission to the tournament so then the user will get a error message. 
-			if(is_null($check)){
+			if(is_null($row)){
 	
 				echo 'Gruppen du letade efter finns inte eller så har du inte åtkomst. ^User_tournaments check^';
 	
@@ -68,7 +70,7 @@ The other thing is that we get the scores from the users and sort them out with 
 	
 		}
 		
-
+		include 'user_points.php'; 
 	}else{ ?>	
 
 			<div>
@@ -78,5 +80,9 @@ The other thing is that we get the scores from the users and sort them out with 
 
 	<?php } ?>
 
+<<<<<<< HEAD
 <?php //include 'user_points.php'; ?>
+=======
+
+>>>>>>> origin/master
 <?php include 'includes/footer.php'; ?>
