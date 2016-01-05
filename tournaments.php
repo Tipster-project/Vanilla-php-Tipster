@@ -29,13 +29,13 @@ for ($x = 0; $x < count($rows); $x++) {
 $comma_separated = implode(",", $row_id);
 
 
-$sql = "SELECT tournament_name FROM tournament WHERE tournament_id IN ($comma_separated)";
+$sql = "SELECT tournament_id, tournament_name FROM tournament WHERE tournament_id IN ($comma_separated)";
 $result = $db_connect->query($sql);
 
 //loops out the group name that you are in.
 while($row = mysqli_fetch_assoc($result)) { ?>
 	
-	<a href="tournaments_single.php?group=<?php echo $row['tournament_name']; ?>">
+	<a href="tournaments_single.php?group=<?php echo $row['tournament_id']; ?>">
 		<div>
 			<h1><?php echo $row['tournament_name']; ?></h1>
 		</div>
