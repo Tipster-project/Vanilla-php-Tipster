@@ -69,12 +69,12 @@
 			<h1>Registrate results</h1>
 			
 					<?php
-					$query = "SELECT allGames.*, results.goal_home, results.goal_away FROM
+					$query = "SELECT allGames.*, results.result_goal_home, results.result_goal_away FROM
 							  (SELECT T1.team_name as team_home, T2.team_name as team_away, 
 							  			T1.team_flag as home_flag, T2.team_flag as away_flag, game_match.* 
 							  FROM game_match, teams T1, teams T2
-							  WHERE T1.team_id=game_match.home_team AND
-							  		T2.team_id=game_match.away_team) as allGames
+							  WHERE T1.team_id=game_match.home_team_id AND
+							  		T2.team_id=game_match.away_team_id) as allGames
 							  
 							  LEFT OUTER JOIN 
 							  (SELECT * FROM results) as results
@@ -90,19 +90,23 @@
 						$away_name = $row["team_away"];
 						$home_flag = $row["home_flag"];
 						$away_flag = $row["away_flag"];
-						$goal_home = $row["goal_home"];
-						$goal_away = $row["goal_away"];
+						$goal_home = $row["result_goal_home"];
+						$goal_away = $row["result_goal_away"];
+						$home_team_id = $row["home_team_id"];
+						$away_team_id = $row["away_team_id"];
 						
 						?>
 						<form method="post" action="includes/save_result.php">
 				<table class="table1 col-sm-12">
 					<tbody>
 						<tr>
-							<td style="width:25%; text-align:right;"><?php echo $home_name;?></td>
+							<td style="width:25%; text-align:right;"><?php echo $home_name;?>
+								<input type="hidden" name="home_team_id" value="<?php echo $home_team_id; ?>"></td>
 							<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
 							<td style="width:10%; text-align:center;"> VS 
 								<input type="hidden" name="game_id" value="<?php echo $game_id; ?>"></td>
-							<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" /></td>
+							<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" />
+								<input type="hidden" name="away_team_id" value="<?php echo $away_team_id; ?>"/></td>
 							<td style="width:25%"><?php echo $away_name;?></td>
 							<td><input type="number" name="home_goal" value="<?php echo $goal_home; ?>" /></td>
 							<td>-</td>
