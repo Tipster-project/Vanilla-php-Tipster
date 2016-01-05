@@ -31,20 +31,16 @@ $result1 = $db_connect->query($query1);
 
 //lägg till _id efter home_team och away_team ^_^!
 /* REGISTRERING AV RESULTAT */
-$query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
-		  (SELECT T1.team_name as team_home, T2.team_name as team_away, 
-		  		T1.team_flag as home_flag, T2.team_flag as away_flag, game_match.* 
-		  	FROM game_match, teams T1, teams T2
-		  WHERE T1.team_id=game_match.home_team AND
-		  T2.team_id=game_match.away_team) as allGames
-		  
-		  LEFT OUTER JOIN 
-		  (SELECT * FROM bets WHERE
-		  user_id = $user_id AND
-		  tournament_id = $tournament_id
-		  ) as bets
-		  ON
-		  allGames.game_id = bets.game_id";
+$query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM 
+			(SELECT T1.team_name AS team_home, T2.team_name AS team_away, T1.team_flag 
+			AS home_flag, T2.team_flag AS away_flag, game_match.* 
+			FROM game_match, teams T1, teams T2 
+			WHERE T1.team_id=game_match.home_team_id AND T2.team_id=game_match.away_team_id) AS allGames 
+
+			LEFT OUTER JOIN 
+			(SELECT * FROM bets 
+			WHERE user_id = $user_id AND tournament_id = $tournament_id ) AS bets 
+			ON allGames.game_id = bets.game_id";
 		  // die($query);
 
 		$result = $db_connect->query($query);

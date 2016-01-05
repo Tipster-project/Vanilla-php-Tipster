@@ -8,12 +8,12 @@
 		
 
 			<?php
-			$query = "SELECT T1.team_name as team_home, T2.team_name as team_away, 
+			$query = "SELECT T1.team_name as team_home_id, T2.team_name as team_away_id, 
 			  				T1.team_flag as home_flag, T2.team_flag as away_flag, 
 			  				T1.group_nr as home_team_number, T2.group_nr as away_team_number, 
 			  				game_match.*
 							FROM game_match, teams T1, teams T2
-							WHERE T1.team_id=game_match.home_team AND T2.team_id=game_match.away_team ";
+							WHERE T1.team_id=game_match.home_team_id AND T2.team_id=game_match.away_team_id ";
 
 			$result = mysqli_query($db_connect, $query);
 				
@@ -21,8 +21,8 @@
 
 				$game_id = $row["game_id"];
 				$group_nr = $row["home_team_number"];
-				$home_name = $row["team_home"];
-				$away_name = $row["team_away"];
+				$home_name = $row["team_home_id"];
+				$away_name = $row["team_away_id"];
 				$home_flag = $row["home_flag"];
 				$away_flag = $row["away_flag"];
 				$game_start = $row['game_start'];

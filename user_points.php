@@ -1,11 +1,7 @@
 <?php
 echo userTournaments();
 //funktionen updaterar lagets poäng
-function updateUserPoints($points, $user_id, $tournament_id){
-	global $db_connect;
-	mysqli_query($db_connect, "UPDATE user_tournaments SET user_points = $points WHERE user_id = '$user_id' AND 
-		tournament_id = $tournament_id" );
-}
+
 function userTournaments() {
 	global $db_connect;
 	$tournament_id = $_GET['group'];
@@ -34,6 +30,8 @@ function userTournaments() {
 	</table>
 <?php
 }
+
+
 function userPoints($user_id) {
 	global $db_connect;
 	$points = 0;
@@ -72,5 +70,11 @@ function userPoints($user_id) {
   	return $points;
   	updateUserPoints($points, $user_id, $tournament_id);
 
+}
+
+function updateUserPoints($points, $user_id, $tournament_id){
+	global $db_connect;
+	mysqli_query($db_connect, "UPDATE user_tournaments SET user_points = $points WHERE user_id = '$user_id' AND 
+		tournament_id = $tournament_id" );
 }
 ?>
