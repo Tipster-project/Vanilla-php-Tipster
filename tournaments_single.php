@@ -59,7 +59,7 @@ The other thing is that we get the scores from the users and sort them out with 
 			
 					<div>
 						<!-- prints out the scoreboard. -->
-						<p><?php echo $row['user_name']; ?> - <?php echo $row['user_points']; ?></p>
+						<p><?php echo $row['user_name']; ?> - <?php echo $row['user_points']; ?> poäng</p>
 					</div>
 			
 				<?php } ?>
