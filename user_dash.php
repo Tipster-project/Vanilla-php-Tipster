@@ -62,4 +62,3 @@
 
 <?php include 'includes/footer.php' ?>
 <script src="js/user_dash_script.js"></script>
-<script src="js/user_dash_load.js"></script>

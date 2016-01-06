@@ -9,13 +9,12 @@ The other thing is that we get the scores from the users and sort them out with 
  include 'includes/header.php'; ?>
 
 <?php 
-	$group = $_GET['group'];
 	// Checks if the $_GET variabel and the user_id $_SESSION is set
 	if(isset($_GET['tour_id']) && isset($_SESSION['user_id'])){
 		//Then se if there is a tournament with the same name as in the $_GET variabel.
 
 
-		$query = "SELECT * FROM tournament WHERE tournament_id = '". $group ."'";
+		$query = "SELECT * FROM tournament WHERE tournament_id = '". $_GET['tour_id'] ."'";
 
 		//$query = "SELECT * FROM tournament WHERE tournament_id = '". $_GET['tour_id'] ."'";
 
