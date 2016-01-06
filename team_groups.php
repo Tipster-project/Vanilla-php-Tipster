@@ -85,6 +85,16 @@ function groupTeams($teamGroup){
 
 	
 	<table>
+		<thead>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>h</td>
+				<td>b</td>
+				<td>diff</td>
+				<td>poäng</td>
+			</tr>
+		</thead>
 		<tbody>
 			<?php
 			//for each row that exist with a specific letter, print table
@@ -95,6 +105,9 @@ function groupTeams($teamGroup){
 					<tr>
 						<td><img class="flag" src="img/<?php echo "{$row['team_flag']}"; ?>" /></td>
 						<td><?php echo "{$row['team_name']}"; ?></td>
+						<td><?php echo "{$row['plus_goals']}"; ?></td>
+						<td><?php echo "{$row['minus_goals']}"; ?></td>
+						<td><?php echo "{$row['goal_diff']}"; ?></td>
 						<td><?php echo "{$row['team_points']}";  ?></td>
 					</tr>
 					<?php

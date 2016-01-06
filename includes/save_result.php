@@ -15,16 +15,16 @@ $result = mysqli_query($db_connect, "SELECT * FROM results WHERE game_id = $game
 if($result->num_rows > 0) {
     mysqli_query($db_connect, "UPDATE results SET result_goal_home = '$home_goal', result_goal_away = '$away_goal' 
     							WHERE game_id = '$game_id' ");
-    //header("Location: ../.php");
+   
 }
 else {
     mysqli_query($db_connect, "INSERT INTO results (game_id, result_goal_home, result_goal_away) 
 	VALUES ('$game_id', '$home_goal', $away_goal)");
-    //header("Location: ../admin_dash.php");
+
 }
 
 /* **************************************** */
-/* ***** Sparar lagens poäng i db ********* */
+/* *** Sparar lagens poäng  & mål i db **** */
 /* **************************************** */
 
 //sparar returvärdet från funktionen teamPoints i variabler
@@ -34,6 +34,21 @@ $points2 = teamPoints("$away_team_id");
 //hämtar funktionen som updaterar lagens aktuella poäng
 insertTeamPoints($points1, "$home_team_id");
 insertTeamPoints($points2, "$away_team_id");
+
+//sparar returvärden från funktionerna plusGoals och minusGoals i variabler
+$plusGoals1 = plusGoals("$home_team_id");
+$plusGoals2 = plusGoals("$away_team_id");
+$minusGoals1 = minusGoals("$home_team_id");
+$minusGoals2 = minusGoals("$away_team_id");
+
+//hämtar funktionerna som updaterar lagens gjorda, insläppta mål och differens
+insertPlusGoals($plusGoals1, "$home_team_id");
+insertMinusGoals($minusGoals1, "$home_team_id");
+insertPlusGoals($plusGoals2, "$away_team_id");
+insertMinusGoals($minusGoals2, "$away_team_id");
+
+insertGoalDiff("$home_team_id", $plusGoals1, $minusGoals1);
+insertGoalDiff("$away_team_id", $plusGoals2, $minusGoals2);
 
 
 /* **************************************** */
@@ -58,7 +73,7 @@ while ( $row = mysqli_fetch_assoc($result2)) {
 	updateUserPoints($points, $extra_points, $user_id, $tournament_id);
 }
 
-//skickar tillbakak till admin_dash
+//skickar tillbaka till admin_dash
 header("Location: ../admin_dash.php");
 
 
@@ -76,9 +91,6 @@ function insertTeamPoints($points, $team_id){
 function teamPoints($team_id){
 	global $db_connect;
 	$points = 0;
-	$plus_goals = 0;
-	$minus_goals = 0;
-	$goal_diff = 0;
 
 	//hämtar all info från game_match och results.
 	//Vill ha alla matchers resultat för att kunna räkna ut hur många poäng varje lag har.
@@ -88,30 +100,16 @@ function teamPoints($team_id){
 			WHERE home_team_id = $team_id OR away_team_id = $team_id";
 
   	$result1 = $db_connect->query($query1);
-  	//var_dump($result);
+
   	while ($row = mysqli_fetch_assoc($result1)) {
 
   		if($row["home_team_id"] == $team_id) {
-  			$plus_goals = $row["result_goal_home"];
-  			$minus_goals = $row["result_goal_away"];
-  			$goal_diff = $plus_goals - $minus_goals;
-  			// echo $plus_goals . "</br>";
-  			// echo $minus_goals . "</br>";
-  			// echo $goal_diff . "</br>";
-
   			if($row["result_goal_home"] > $row["result_goal_away"]){
   				$points = $points +3;
   			}
   		}
-  		if ($row["away_team_id"] == $team_id){
 
-  			$plus_goals = $row["result_goal_away"];
-  			$minus_goals = $row["result_goal_home"];
-  			$goal_diff = $plus_goals - $minus_goals;
-  			// echo $plus_goals . "</br>";
-  			// echo $minus_goals . "</br>";
-  			// echo $goal_diff . "</br>";
-
+  		else if ($row["away_team_id"] == $team_id){
   			if($row["result_goal_away"] > $row["result_goal_home"]){
   				$points = $points +3;
   			}
@@ -123,6 +121,83 @@ function teamPoints($team_id){
 
   	} 
     return $points;   
+}
+
+
+//funktionen räknar ut antal gjorda mål
+function plusGoals($team_id){
+	global $db_connect;
+	$plus_goals = 0;
+	//hämtar all info från game_match och results.
+	//Vill ha alla matchers resultat för att kunna räkna ut hur många mål varje lag har gjort.
+	$query1 = "SELECT game_match.*, results.* FROM game_match 
+			RIGHT JOIN results
+			ON results.game_id = game_match.game_id
+			WHERE home_team_id = $team_id OR away_team_id = $team_id";
+
+  	$result1 = $db_connect->query($query1);
+  	//var_dump($result);
+  	while ($row = mysqli_fetch_assoc($result1)) {
+
+  		if($row["home_team_id"] == $team_id) {
+  			$plus_goals = $plus_goals + $row["result_goal_home"];	
+  		}
+  		if ($row["away_team_id"] == $team_id){
+  			$plus_goals = $plus_goals + $row["result_goal_away"];
+  		}
+
+  	} 
+    return $plus_goals;   
+}
+
+//funktionen räknar ut antal insläppta mål
+function minusGoals($team_id){
+	global $db_connect;
+	$minus_goals = 0;
+	//hämtar all info från game_match och results.
+	//Vill ha alla matchers resultat för att kunna räkna ut hur många mål varje lag har gjort.
+	$query1 = "SELECT game_match.*, results.* FROM game_match 
+			RIGHT JOIN results
+			ON results.game_id = game_match.game_id
+			WHERE home_team_id = $team_id OR away_team_id = $team_id";
+
+  	$result1 = $db_connect->query($query1);
+  	//var_dump($result);
+  	while ($row = mysqli_fetch_assoc($result1)) {
+
+  		if($row["home_team_id"] == $team_id) {
+  			$minus_goals = $minus_goals + $row["result_goal_away"];	
+  		}
+  		if ($row["away_team_id"] == $team_id){
+  			$minus_goals = $minus_goals + $row["result_goal_home"];
+  		}
+
+  	} 
+    return $minus_goals; 
+}
+
+//funktionen räknar ut mål differensen och updaterar goal_diff i db
+function insertGoalDiff($team_id, $plusGoals, $minusGoals){
+	global $db_connect;
+
+	//räknar ut diffen mellan plus och minus målen
+	$goal_diff = $plusGoals - $minusGoals;
+	//Uppdaterar user_points med den nya $total_points
+	mysqli_query($db_connect, "UPDATE teams SET goal_diff = $goal_diff WHERE team_id = $team_id");
+
+	return $goal_diff;
+}
+
+//updaterar antal gjorda mål db
+function insertPlusGoals($points, $team_id){
+	global $db_connect;
+	mysqli_query($db_connect, "UPDATE teams SET plus_goals = $points WHERE team_id = '$team_id' " );
+}
+
+//updaterar antal insläppta mål i db
+function insertMinusGoals($points, $team_id){
+	global $db_connect;
+	mysqli_query($db_connect, "UPDATE teams SET minus_goals = $points WHERE team_id = '$team_id' " );
 }
 
 
