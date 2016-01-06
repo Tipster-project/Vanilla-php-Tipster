@@ -55,14 +55,13 @@ The other thing is that we get the scores from the users and sort them out with 
 				<?php $query = "SELECT * FROM user_tournaments WHERE tournament_id = '". $row['tournament_id'] ."' ORDER BY user_points DESC ";
 				$result = $db_connect->query($query); ?>
 				<div class="group_scoreboard">
-				<?php while($row = mysqli_fetch_assoc($result)) { ?>
-			
-					<div>
-						<!-- prints out the scoreboard. -->
-						<p><?php echo $row['user_name']; ?> - <?php echo $row['user_points']; ?> poäng</p>
-					</div>
-			
-				<?php } ?>
+					<ul>
+					<?php while($row = mysqli_fetch_assoc($result)) { ?>
+							<!-- prints out the scoreboard. -->
+							<li><?php echo $row['user_name']; ?> - <?php echo $row['user_points']; ?> poäng</li></br>
+				
+					<?php } ?>
+					</ul>
 				</div>
 	
 			<?php }

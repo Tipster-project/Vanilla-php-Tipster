@@ -553,6 +553,12 @@ p.link {
     p.link a:hover {
       background-color: #00987f; }
 
+/* ********************************************* */
+/* *********    TOURNAMNET SINGLE    *********** */
+/* ********************************************* */
+.group_scoreboard {
+  background-color: #fff; }
+
 @media screen and (min-width: 200px) and (max-width: 767px) {
   .logo {
     text-align: center;

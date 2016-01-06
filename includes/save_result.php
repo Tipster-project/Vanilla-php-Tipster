@@ -13,7 +13,8 @@ $away_team_id = $_POST['away_team_id'];
 $result = mysqli_query($db_connect, "SELECT * FROM results WHERE game_id = $game_id ");
 
 if($result->num_rows > 0) {
-    mysqli_query($db_connect, "UPDATE results SET result_goal_home = '$home_goal', result_goal_away = '$away_goal' WHERE game_id = '$game_id' ");
+    mysqli_query($db_connect, "UPDATE results SET result_goal_home = '$home_goal', result_goal_away = '$away_goal' 
+    							WHERE game_id = '$game_id' ");
     //header("Location: ../.php");
 }
 else {
@@ -75,6 +76,9 @@ function insertTeamPoints($points, $team_id){
 function teamPoints($team_id){
 	global $db_connect;
 	$points = 0;
+	$plus_goals = 0;
+	$minus_goals = 0;
+	$goal_diff = 0;
 
 	//hämtar all info från game_match och results.
 	//Vill ha alla matchers resultat för att kunna räkna ut hur många poäng varje lag har.
@@ -88,11 +92,26 @@ function teamPoints($team_id){
   	while ($row = mysqli_fetch_assoc($result1)) {
 
   		if($row["home_team_id"] == $team_id) {
+  			$plus_goals = $row["result_goal_home"];
+  			$minus_goals = $row["result_goal_away"];
+  			$goal_diff = $plus_goals - $minus_goals;
+  			// echo $plus_goals . "</br>";
+  			// echo $minus_goals . "</br>";
+  			// echo $goal_diff . "</br>";
+
   			if($row["result_goal_home"] > $row["result_goal_away"]){
   				$points = $points +3;
   			}
   		}
-  		else if ($row["away_team_id"] == $team_id){
+  		if ($row["away_team_id"] == $team_id){
+
+  			$plus_goals = $row["result_goal_away"];
+  			$minus_goals = $row["result_goal_home"];
+  			$goal_diff = $plus_goals - $minus_goals;
+  			// echo $plus_goals . "</br>";
+  			// echo $minus_goals . "</br>";
+  			// echo $goal_diff . "</br>";
+
   			if($row["result_goal_away"] > $row["result_goal_home"]){
   				$points = $points +3;
   			}
@@ -101,9 +120,12 @@ function teamPoints($team_id){
   		if($row["result_goal_away"] == $row["result_goal_home"]){
   			$points = $points +1;
   		}
+
   	} 
     return $points;   
 }
+
+
 
 //funktionen räknar ut poängen för varje användare
 function userPoints($user_id, $tournament_id) {
