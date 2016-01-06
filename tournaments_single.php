@@ -58,10 +58,10 @@ The other thing is that we get the scores from the users and sort them out with 
 				<div class="group_scoreboard">
 				<?php while($row = mysqli_fetch_assoc($result)) { ?>
 			
-					<!--<div>
-						prints out the scoreboard.
-						<p><?php //echo $row['user_name']; ?> - <?php //echo $row['user_points']; ?></p>
-					</div> -->
+					<div>
+						<!-- prints out the scoreboard. -->
+						<p><?php echo $row['user_name']; ?> - <?php echo $row['user_points']; ?></p>
+					</div>
 			
 				<?php } ?>
 				</div>
@@ -69,8 +69,7 @@ The other thing is that we get the scores from the users and sort them out with 
 			<?php }
 	
 		}
-		
-		include 'user_points.php'; 
+
 	}else{ ?>	
 
 			<div>
