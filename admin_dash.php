@@ -34,16 +34,19 @@
 				<input type='submit' name='game_reg_btn' value='Registrate'>
 			</form>	
 		</div> -->
-		<!-- REGISTERING AV VINNARE -->
+		
 
-				
-		<?php
-		$query1 = "SELECT team_name, team_id FROM teams";
-		$result1 = $db_connect->query($query1);
-		?>
+		<!-- REGISTERING AV VINNARE -->		
+		
 		<div class="result_winner col-sm-12">
 			<h1>Registrate winner</h1>
-			<form action="includes/save_extra_result.php" method="post">
+
+			<?php
+			$query1 = "SELECT team_name, team_id FROM teams";
+			$result1 = $db_connect->query($query1);
+			?>
+
+			<form action="includes/save_result.php" method="post">
 				<label for="player">Målkung:</label></br>
 				<input type="text" name="player" /></br>
 

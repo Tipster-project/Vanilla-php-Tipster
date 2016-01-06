@@ -80,9 +80,4 @@ The other thing is that we get the scores from the users and sort them out with 
 
 	<?php } ?>
 
-<<<<<<< HEAD
-<?php //include 'user_points.php'; ?>
-=======
-
->>>>>>> origin/master
 <?php include 'includes/footer.php'; ?>
