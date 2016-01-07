@@ -344,3 +344,29 @@ p.link {
 // 	z-index:10;
 // }
 
+/* ********************************************* */
+/* ************    CREAT GROUP    ************** */
+/* ********************************************* */
+#tournament_reg{
+	h2{
+		text-align: center;
+		
+
+	}
+	#creat_group_form{
+		max-width: 500px;
+		min-width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		.picture{
+			#groupname{
+
+			}
+		}
+		#create_btn{
+			float: center;
+		}
+
+	}
+}
+
