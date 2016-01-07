@@ -61,7 +61,6 @@
 					?>
 				</select></br>
 				<input type="submit" value="Spara"/>
-				<input type="hidden" name="tournament" value="<?php echo $tournament_id; ?>" />
 			</form>	
 		</div>
 
