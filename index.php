@@ -15,7 +15,7 @@
 					<div id='login' class="col-sm-12 col-md-6">
 							<form action='login_check.php' method='post'>
 								<input type='text' name='login_email' placeholder='Email'></br>
-								<input type='text' name='login_password' placeholder='Password'></br>
+								<input type='password' name='login_password' placeholder='Password'></br>
 								<button type='submit' name='login_btn' value='Login' class="login_button">Logga in</button>
 							</form>	
 					</div><!-- #login -->
