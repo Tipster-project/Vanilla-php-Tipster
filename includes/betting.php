@@ -68,41 +68,56 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 			$start_time = strtotime($game_start);
 			$lock_time = strtotime($formatDate);
 
-
-			
 			?>
 			
-			<div class="bet_boxes">
+			<!-- <div class="bet_boxes"> -->
+			<table class="table1 col-sm-12">
+				<tbody>
 
 				<?php if($start_time >= $lock_time){ ?>
 					
 					<!-- YOU CAN BET -->
-					<p>
-					<?php echo ' ' . $home_name. ''; ?><img src="img/<?php echo $home_flag ?>" style="width:30px", "height:30px"/> VS 
-					<img src="img/<?php echo $away_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $away_name. ''; ?>
-					<input class="goal_home" original="<?php echo $goal_home; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_home; ?>" /> - 
-					<input class="goal_away" original="<?php echo $goal_away; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_away; ?>"/>
-					</p>
-					<p class="error">
-						du har fel...
-					</p>
-					<input class="game_id" type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /></br>
-
-
+					<tr>
+						<td style="width:25%; text-align:right;"><?php echo date("d M H:i", strtotime($game_start));?></td>
+						<td style="width:25%; text-align:right;"><?php echo $home_name;?>
+							
+						<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+						<td style="width:10%; text-align:center;"> VS 
+							
+						<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" />
+						
+						<td style="width:25%"><?php echo $away_name;?></td>
+						
+						
+						<td><input class="goal_home" original="<?php echo $goal_home; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_home; ?>" /></td>
+						<td>-</td>
+						<td><input class="goal_away" original="<?php echo $goal_away; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_away; ?>"/></td><br/>
+						<td><input class="game_id" type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /></td>
+						<td class="error">Du måste fylla i båda fälten</td>
+					</tr>
 				<?php }else{ ?>
-					<!-- ThIS BET IS LOCKED -->
-					<p>
-					<?php echo ' ' . $home_name. ''; ?><img src="img/<?php echo $home_flag ?>" style="width:30px", "height:30px"/> VS 
-					<img src="img/<?php echo $away_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $away_name. ''; ?>
-					 <?php echo $goal_home; ?> - <?php echo $goal_away; ?> <br/>
-					 this bet is locked because the game has started
-					</p>
+					<tr>
+						<td style="width:25%; text-align:right;"><?php echo date("d M H:i", strtotime($game_start));?></td>
+						<td style="width:25%; text-align:right;"><?php echo $home_name;?>
+							
+						<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+						<td style="width:10%; text-align:center;"> VS 
+							
+						<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" />
+						
+						<td style="width:25%"><?php echo $away_name;?></td>
+						
+						<td><?php echo $goal_home; ?> - <?php echo $goal_away; ?></td><br/>
+						<td>this bet is locked because the game has started</td>
+						
+					</tr>
 				<?php } ?>
-			</div>
+			</tbody>
+		</table>
+	<?php } ?>
+		<button id="check" name="save_bets" value="Spara Bets">spara bets</button>
 
-		<?php } ?>
 
-	<button id="check" name="save_bets" value="Spara Bets">spara bets</button>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 
@@ -115,18 +130,18 @@ $(document).ready(function(){
 	//loops trough all the input values again and and matches them with the old ones 'variabel inputs' to se if any have changed.
 	function check_values(){
 		post_values = [];
-		$('.bet_boxes').each(function() {
+		$('tr').each(function() {
 
-			var game_id = $(this).children('input.game_id');
-			var goal_home = $(this).children('p').children('input.goal_home');
-			var goal_away = $(this).children('p').children('input.goal_away');
+			var game_id = $(this).children('td').children('input.game_id');
+			var goal_home = $(this).children('td').children('input.goal_home');
+			var goal_away = $(this).children('td').children('input.goal_away');
 
 
 			if(goal_home.attr('original') !== goal_home.val() || goal_away.attr('original') !== goal_away.val()){
 				if (goal_home.val() == '' || goal_away.val() == '') {
-					$(this).children('p.error').show();
+					$(this).children('td.error').show();
 				}else{
-					$(this).children('p.error').hide();
+					$(this).children('td.error').hide();
 					var post_value = {game_id:game_id.val(), goal_home:goal_home.val(), goal_away:goal_away.val()};
 					post_values.push(post_value);
 				}
