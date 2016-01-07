@@ -586,6 +586,19 @@ p.link {
 /* ********************************************* */
 /* **************    BETTING    **************** */
 /* ********************************************* */
+/* ********************************************* */
+/* ************    CREAT GROUP    ************** */
+/* ********************************************* */
+#tournament_reg h2 {
+  text-align: center; }
+#tournament_reg #creat_group_form {
+  max-width: 500px;
+  min-width: 300px;
+  margin-left: auto;
+  margin-right: auto; }
+  #tournament_reg #creat_group_form #create_btn {
+    float: center; }
+
 @media screen and (min-width: 200px) and (max-width: 767px) {
   /* ********************************************* */
   /* ***************    INDEX     **************** */

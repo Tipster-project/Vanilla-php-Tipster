@@ -47,7 +47,9 @@ The other thing is that we get the scores from the users and sort them out with 
 				<!-- if allt the checks goes well then the torunament name and text will get printed. -->
 				<div class="group_head">
 					<h1><?php echo $row['tournament_name']; ?></h1>
-					<p><?php echo $row['tournament_text']; ?></p>
+					<?php if(!$row['tournament_text'] == 0){ ?>
+						<p><?php echo $row['tournament_text']; ?></p>
+					<?php } ?>
 				</div>
 				
 				<!-- Here we will get out how many points all the user has, the user name and then it is ordered by the
