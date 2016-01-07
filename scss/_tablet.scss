@@ -1,12 +1,25 @@
-.get_in {
-		position: absolute;
-		bottom: 20px;
-	}
+/* ********************************************* */
+/* ***************    INDEX     **************** */
+/* ********************************************* */
+
+.logo h1 {
+	font-size: 40px;
+	margin-top: 9px;
+}
+
+.field {
+	margin-top: -43px;
+}
 
 .info {
 	overflow:hidden;
+	margin-top: -43px;
 }
 
 .games {
 	float:left;
+}
+
+.today h1, .tomorrow h1 {
+	font-size: 30px;
 }

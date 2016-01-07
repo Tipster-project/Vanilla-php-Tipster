@@ -5,7 +5,6 @@ $tournament_id = $_GET['tour_id'];
 
 /* REGISTRERING AV SLUTVINNARE OCH SKYTTEKUNG */
 $query1 = "SELECT team_name, team_id FROM teams";
-
 $result1 = $db_connect->query($query1);
 ?>
 <div class="container">

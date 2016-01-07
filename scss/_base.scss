@@ -1,7 +1,6 @@
 /* ********************************************* */
 /* ***************    BASICS    **************** */
 /* ********************************************* */
-
 body {
 	font-family: 'Oswald', sans-serif;
 	//font-family: 'Lato', sans-serif;
@@ -9,13 +8,13 @@ body {
 	background-color: #fff;	
 }
 
-a {
-	color: black;
-}
+// a {
+// 	color: black;
+// }
 
 button {
-	width: 200px;
-	height: 50px;
+	//width: 200px;
+	// height: 50px;
 	//border-radius: 10px;
 	background-color: $yellow;
 	//background-color: #7F476B;
@@ -82,9 +81,50 @@ h3 {
 /* ***************    INDEX     **************** */
 /* ********************************************* */
 
-.logo {
-	width: 300px;
+.logo h1 {
+	font-family: 'Candal', sans-serif;
+	font-weight:900;
+	font-size: 60px;
+	color: black;
+	padding-left:20px;
+	margin-top:5px;
 }
+
+.logowrapper {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
+background: #02aaad; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+	height:90px;	
+
+	#login, #registrate {
+		text-align: right;
+	}
+
+	#login {
+		form {
+			margin-top: 20px;
+		}
+		.login_button {
+			width: 61px;
+		}
+		
+	}
+	#registrate {
+		.registrate_button {
+			width:320px;
+			height:60px;
+			z-index: 10;
+			position:relative;
+			margin-top:10px;
+		}
+
+	}
+}
+
 
 .field {
 	background-image: url(../img/game.png);
@@ -92,30 +132,32 @@ h3 {
 	background-size: cover;
 	height:600px;
 
-	.get_in {
-		background-color: rgba(255,255,255,1);
-		border: 3px solid $petrol;
-		// border-radius: 20px;
-		position:absolute;
-		bottom: 10px;	
+	// .get_in {
+	// 	background-color: rgba(255,255,255,1);
+	// 	border: 3px solid $petrol;
+	// 	// border-radius: 20px;
+	// 	position:absolute;
+	// 	bottom: 10px;	
 
-		#login, .registrate {
-			padding-top: 20px;
-			text-align:center;
-		}
+	// 	#login, .registrate {
+	// 		padding-top: 20px;
+	// 		text-align:center;
+	// 	}
 
-		input {
-			margin: 0 auto;
-		}
 
-		.registrate_button {
-			margin-bottom: 15px;
-		}	
 
-		.login_button {
-			margin-top: 10px;
-		}
-	}
+	// 	input {
+	// 		margin: 0 auto;
+	// 	}
+
+	// 	.registrate_button {
+	// 		margin-bottom: 15px;
+	// 	}	
+
+	// 	.login_button {
+	// 		margin-top: 10px;
+	// 	}
+	// }
 }
 
 .info {

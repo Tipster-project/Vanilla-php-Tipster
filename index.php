@@ -1,44 +1,54 @@
-<?php 
-	include 'includes/header.php'; 
-?>	<div class="logo">
-		<!-- <img src="img/logo.png" alt=""> -->
+<?php include 'includes/header.php'; ?>	
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="logowrapper col-md-12">
+			<div class="logo col-md-7 col-sm-6 col-xs-12">
+				<h1>Tippzter.com</h1>
+			</div>
+		
+			<div class="col-md-5 col-sm-6 col-xs-12" id="login">	
+				<form action='login_check.php' method='post'>
+					<input type='text' name='login_email' placeholder='Email'>
+					<input type='password' name='login_password' placeholder='Password'>
+					<button type='submit' name='login_btn' value='Login' class="login_button">Logga in</button></br>
+					
+				</form>	
+			</div>
+			<div class="col-md-5 col-sm-6" id="registrate">	
+				<a href='reg_index.php' class="link link-info link-lg" data-target="#myModal">
+					<button class="registrate_button">Registrera här!</button>
+				</a>
+			</div>
+		</div>
+		
 	</div>
+</div>
+
 	
-	<div class="container-fluid">
-		<div class="row">
+<div class="container-fluid">
+	<div class="row">
 
-			<!-- <p class="col-sm-12">Tipster</p> -->
-			<div class="field col-md-12">
-				<div class="get_in col-sm-6 col-xs-11">
-
-					<!-- LOGGA IN -->
-					<div id='login' class="col-sm-12 col-md-6">
-							<form action='login_check.php' method='post'>
-								<input type='text' name='login_email' placeholder='Email'></br>
-								<input type='text' name='login_password' placeholder='Password'></br>
-								<button type='submit' name='login_btn' value='Login' class="login_button">Logga in</button>
-							</form>	
-					</div><!-- #login -->
+		<!-- <p class="col-sm-12">Tipster</p> -->
+	<div class="field col-md-12">
+			<!-- <div class="get_in col-sm-6 col-xs-11"> -->
 
 					<!-- REGISTRERA -->
-					<!-- Trigger the modal with a link -->
-					<div class="registrate col-sm-12 col-md-6">
-						<a href='reg_index.php' class="link link-info link-lg" data-target="#myModal">
-							<button class="registrate_button">Registrera här!</button>
-						</a>
-					</div>
+				<!-- Trigger the modal with a link
+				<div class="registrate col-sm-12 col-md-6">
+					
+				</div> -->
+			</div><!-- #get_in -->
+		</div><!-- #field --> 
 
-				</div><!-- #get_in -->
-			</div><!-- #field -->
+		<!-- INFORMATION -->
+		<div class="info col-md-12">
+			<h1>How it all works!</h1>
+			<p>Tippa med dina vänner, bjud in och gå loss på betten. Bla bla bla...</p>
+		</div>
 
-			<!-- INFORMATION -->
-			<div class="info col-md-12">
-				<h1>How it all works!</h1>
-				<p>Tippa med dina vänner, bjud in och gå loss på betten. Bla bla bla...</p>
-			</div>
-
-		</div><!-- #row -->
-	</div><!-- #container-fluid -->
+	</div><!-- #row -->
+</div><!-- #container-fluid -->
 
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
@@ -79,7 +89,7 @@ function gamesToday(){
 	  				T1.group_nr as home_team_number, T2.group_nr as away_team_number, 
 	  				game_match.*
 					FROM game_match, teams T1, teams T2
-					WHERE T1.team_id=game_match.home_team AND T2.team_id=game_match.away_team ";
+					WHERE T1.team_id=game_match.home_team_id AND T2.team_id=game_match.away_team_id ";
 
 	$result = mysqli_query($db_connect, $query);
 	
@@ -121,7 +131,7 @@ function gamesTomorrow(){
 	  				T1.group_nr as home_team_number, T2.group_nr as away_team_number, 
 	  				game_match.*
 					FROM game_match, teams T1, teams T2
-					WHERE T1.team_id=game_match.home_team AND T2.team_id=game_match.away_team ";
+					WHERE T1.team_id=game_match.home_team_id AND T2.team_id=game_match.away_team_id ";
 
 	$result = mysqli_query($db_connect, $query);
 	

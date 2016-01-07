@@ -1,14 +1,35 @@
-.logo {
-	text-align: center;
-	padding-bottom: 5px;
-	margin: 0 auto;
+// .logo {
+// 	text-align: center;
+// 	padding-bottom: 5px;
+// 	margin: 0 auto;
 
-	img {
-		width: 70%;
-	}
+// 	img {
+// 		width: 70%;
+// 	}
+// }
+/* ********************************************* */
+/* ***************    INDEX     **************** */
+/* ********************************************* */
+
+.logo h1 {
+	font-size: 40px;
+	margin-top: 9px;
+	text-align:center;
+	padding-left:0;
+}
+
+.info {
+	overflow:hidden;
+	margin-top: -43px;
+}
+
+#login {
+	z-index:10;
+	position:relative;
 }
 .field {
 	background-image: url(../img/gameMob.png);
+	//margin-top: -65px;
 	
 	.get_in {
 		position: absolute;

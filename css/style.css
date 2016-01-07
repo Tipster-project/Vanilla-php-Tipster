@@ -361,12 +361,7 @@ body {
   font-family: 'Oswald', sans-serif;
   background-color: #fff; }
 
-a {
-  color: black; }
-
 button {
-  width: 200px;
-  height: 50px;
   background-color: #e9ea44;
   color: black; }
 
@@ -413,28 +408,45 @@ h3 {
 /* ********************************************* */
 /* ***************    INDEX     **************** */
 /* ********************************************* */
-.logo {
-  width: 300px; }
+.logo h1 {
+  font-family: 'Candal', sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+  color: black;
+  padding-left: 20px;
+  margin-top: 5px; }
+
+.logowrapper {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
+  background: #02aaad;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+  height: 90px; }
+  .logowrapper #login, .logowrapper #registrate {
+    text-align: right; }
+  .logowrapper #login form {
+    margin-top: 20px; }
+  .logowrapper #login .login_button {
+    width: 61px; }
+  .logowrapper #registrate .registrate_button {
+    width: 320px;
+    height: 60px;
+    z-index: 10;
+    position: relative;
+    margin-top: 10px; }
 
 .field {
   background-image: url(../img/game.png);
   background-repeat: no-repeat;
   background-size: cover;
   height: 600px; }
-  .field .get_in {
-    background-color: white;
-    border: 3px solid #00987f;
-    position: absolute;
-    bottom: 10px; }
-    .field .get_in #login, .field .get_in .registrate {
-      padding-top: 20px;
-      text-align: center; }
-    .field .get_in input {
-      margin: 0 auto; }
-    .field .get_in .registrate_button {
-      margin-bottom: 15px; }
-    .field .get_in .login_button {
-      margin-top: 10px; }
 
 .info {
   text-align: center;
@@ -575,12 +587,22 @@ p.link {
 /* **************    BETTING    **************** */
 /* ********************************************* */
 @media screen and (min-width: 200px) and (max-width: 767px) {
-  .logo {
+  /* ********************************************* */
+  /* ***************    INDEX     **************** */
+  /* ********************************************* */
+  .logo h1 {
+    font-size: 40px;
+    margin-top: 9px;
     text-align: center;
-    padding-bottom: 5px;
-    margin: 0 auto; }
-    .logo img {
-      width: 70%; }
+    padding-left: 0; }
+
+  .info {
+    overflow: hidden;
+    margin-top: -43px; }
+
+  #login {
+    z-index: 10;
+    position: relative; }
 
   .field {
     background-image: url(../img/gameMob.png); }
@@ -600,15 +622,25 @@ p.link {
   .group h3 {
     margin-top: 10px; } }
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .get_in {
-    position: absolute;
-    bottom: 20px; }
+  /* ********************************************* */
+  /* ***************    INDEX     **************** */
+  /* ********************************************* */
+  .logo h1 {
+    font-size: 40px;
+    margin-top: 9px; }
+
+  .field {
+    margin-top: -43px; }
 
   .info {
-    overflow: hidden; }
+    overflow: hidden;
+    margin-top: -43px; }
 
   .games {
-    float: left; } }
+    float: left; }
+
+  .today h1, .tomorrow h1 {
+    font-size: 30px; } }
 @media screen and (min-width: 992px) {
   .get_in {
     right: 10px;
