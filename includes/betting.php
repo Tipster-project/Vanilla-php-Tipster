@@ -41,7 +41,8 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 			LEFT OUTER JOIN 
 			(SELECT * FROM bets 
 			WHERE user_id = $user_id AND tournament_id = $tournament_id ) AS bets 
-			ON allGames.game_id = bets.game_id";
+			ON allGames.game_id = bets.game_id
+			ORDER BY allGames.game_id";
 
 		  // die($query);
 
@@ -56,20 +57,47 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 			$away_flag = $row["away_flag"];
 			$goal_home = $row["goal_home"];
 			$goal_away = $row["goal_away"];
+			$game_start = $row["game_start"];
+
+			//date check variabels
+			$date = date('Y-m-d H:i:s');
+			$currentDate = strtotime($date);
+			$futureDate = $currentDate+(60*10);
+			$formatDate = date(" Y-m-d H:i:s", $futureDate);
+
+			$start_time = strtotime($game_start);
+			$lock_time = strtotime($formatDate);
+
+
 			
 			?>
-
+			
 			<div class="bet_boxes">
-				<p>
+
+				<?php if($start_time >= $lock_time){ ?>
+					
+					<!-- YOU CAN BET -->
+					<p>
 					<?php echo ' ' . $home_name. ''; ?><img src="img/<?php echo $home_flag ?>" style="width:30px", "height:30px"/> VS 
 					<img src="img/<?php echo $away_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $away_name. ''; ?>
 					<input class="goal_home" original="<?php echo $goal_home; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_home; ?>" /> - 
 					<input class="goal_away" original="<?php echo $goal_away; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_away; ?>"/>
-				</p>
-				<p class="error">
-					du har fel...
-				</p>
-				<input class="game_id" type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /></br>
+					</p>
+					<p class="error">
+						du har fel...
+					</p>
+					<input class="game_id" type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /></br>
+
+
+				<?php }else{ ?>
+					<!-- ThIS BET IS LOCKED -->
+					<p>
+					<?php echo ' ' . $home_name. ''; ?><img src="img/<?php echo $home_flag ?>" style="width:30px", "height:30px"/> VS 
+					<img src="img/<?php echo $away_flag ?>" style="width:30px", "height:30px"/><?php echo ' ' . $away_name. ''; ?>
+					 <?php echo $goal_home; ?> - <?php echo $goal_away; ?> <br/>
+					 this bet is locked because the game has started
+					</p>
+				<?php } ?>
 			</div>
 
 		<?php } ?>
