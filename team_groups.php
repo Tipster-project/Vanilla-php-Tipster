@@ -79,7 +79,7 @@ function games($groupGames){
 function groupTeams($teamGroup){
 	global $db_connect;
 
-	$query = 'SELECT * FROM teams ORDER BY team_points DESC';
+	$query = 'SELECT * FROM teams ORDER BY team_points DESC, goal_diff DESC';
 	$result = mysqli_query($db_connect, $query);
 	?>
 
@@ -91,7 +91,7 @@ function groupTeams($teamGroup){
 				<td></td>
 				<td>h</td>
 				<td>b</td>
-				<td>diff</td>
+				<td>+/-</td>
 				<td>poäng</td>
 			</tr>
 		</thead>

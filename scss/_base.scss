@@ -25,6 +25,10 @@ h1 {
 	font-size: 40px;
 }
 
+h2 {
+	color: $yellow;
+}
+
 h3 {
 	color: $petrol;
 }
@@ -34,12 +38,18 @@ h3 {
 	height: 30px;
 	margin-top:-5px;
 }
+
+.container-fluid {
+	padding:0;
+}
 /* ********************************************* */
 /* ****************    MENU     **************** */
 /* ********************************************* */
 
 .navbar  {
 	background-color: $petrol;
+	border-radius: 0px;
+	border: none;
 
 	li:hover {
 		background-color: #ddd;
@@ -60,6 +70,10 @@ h3 {
 	li {
 		background-color: $yellow;
 	}
+}
+
+.navbar-collapse {
+	padding: 0;
 }
 
 
@@ -196,6 +210,9 @@ th, td {
 .wrapper {
 	background-image: url(../img/game.png);
 	overflow:hidden;
+	//width:100%;
+	height: 400px;
+
 
 	h1 {
 		color: $yellow;
@@ -234,7 +251,7 @@ h1 {
   float: none;
   list-style: none;
   position: relative;
-  margin: 80px 0 0 10px;
+  margin: 0 0 0 10px;
   text-align: left;
 
   li {
@@ -316,4 +333,14 @@ p.link {
 .group_scoreboard {
 	background-color:#fff;
 }
+
+/* ********************************************* */
+/* **************    BETTING    **************** */
+/* ********************************************* */
+
+// #check {
+// 	position: fixed;
+// 	bottom: 5px;
+// 	z-index:10;
+// }
 

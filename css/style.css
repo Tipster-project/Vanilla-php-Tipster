@@ -373,6 +373,9 @@ button {
 h1 {
   font-size: 40px; }
 
+h2 {
+  color: #e9ea44; }
+
 h3 {
   color: #00987f; }
 
@@ -381,11 +384,16 @@ h3 {
   height: 30px;
   margin-top: -5px; }
 
+.container-fluid {
+  padding: 0; }
+
 /* ********************************************* */
 /* ****************    MENU     **************** */
 /* ********************************************* */
 .navbar {
-  background-color: #00987f; }
+  background-color: #00987f;
+  border-radius: 0px;
+  border: none; }
   .navbar li:hover {
     background-color: #ddd; }
 
@@ -398,6 +406,9 @@ h3 {
 
 .navbar-right li {
   background-color: #e9ea44; }
+
+.navbar-collapse {
+  padding: 0; }
 
 /* ********************************************* */
 /* ***************    INDEX     **************** */
@@ -492,7 +503,8 @@ th, td {
 /* ********************************************* */
 .wrapper {
   background-image: url(../img/game.png);
-  overflow: hidden; }
+  overflow: hidden;
+  height: 400px; }
   .wrapper h1 {
     color: #e9ea44; }
 
@@ -504,7 +516,7 @@ th, td {
   float: none;
   list-style: none;
   position: relative;
-  margin: 80px 0 0 10px;
+  margin: 0 0 0 10px;
   text-align: left; }
   .tabs li {
     float: left;
@@ -559,6 +571,9 @@ p.link {
 .group_scoreboard {
   background-color: #fff; }
 
+/* ********************************************* */
+/* **************    BETTING    **************** */
+/* ********************************************* */
 @media screen and (min-width: 200px) and (max-width: 767px) {
   .logo {
     text-align: center;

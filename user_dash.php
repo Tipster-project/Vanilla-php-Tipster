@@ -1,16 +1,18 @@
 <?php include 'includes/header.php' ?>
-<?php include 'includes/menu.php'; ?>
+
 	
 
 
 <div class="container-fluid">
 	<div class="row1">
+
 		<div class="wrapper col-sm-12">
+			<?php include 'includes/menu.php'; ?>
 			<h1>Välkommen <?php echo $_SESSION['user_name']; ?></h1>
-		<?php include 'bet.php' ?>
-		</div>
-		
+			<?php include 'bet.php' ?>
+		</div>	
 	</div>
+	
 </div>
 
 
@@ -36,6 +38,8 @@
 		</ul>
 
 		<br style="clear: both;" />
+	</div><!-- #row -->
+</div><!-- #container-fluid -->
 
 
 <!-- 		<div class="wrap col-sm-10">
@@ -55,8 +59,7 @@
 </div> -->
 		
 			
-	</div><!-- #row -->
-</div><!-- #container-fluid -->
+
 
 
 

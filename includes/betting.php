@@ -7,25 +7,30 @@ $tournament_id = $_GET['tour_id'];
 $query1 = "SELECT team_name, team_id FROM teams";
 $result1 = $db_connect->query($query1);
 ?>
-<div class="extra_bet_box">
-	<form action="save_extra_bet.php" method="post">
-		<label for="player">Målkung:</label></br>
-		<input type="text" name="player" /></br>
+<div class="container">
+	<div class="row">
+		<div class="extra_bet_box">
+			<form action="save_extra_bet.php" class="col-sm-12" method="post">
+				<label for="player">Målkung:</label>
+				<input type="text" name="player" />
 
-		<label for="winning_team">EM-vinnare 2016:</label></br>
-		<select name="selected_team"> 
-			<?php
-			while($row = mysqli_fetch_assoc($result1)) { 
-				?>
-				<option value="<?php echo $row['team_id']; ?>"><?php echo $row['team_name']; ?></option>
-			<?php 
-			} 
-			?>
-		</select></br>
-		<input type="submit" value="Spara"/>
-		<input type="hidden" name="tournament" value="<?php echo $tournament_id; ?>" />
-	</form>	
+				<label for="winning_team">EM-vinnare 2016:</label>
+				<select name="selected_team"> 
+					<?php
+					while($row = mysqli_fetch_assoc($result1)) { 
+						?>
+						<option value="<?php echo $row['team_id']; ?>"><?php echo $row['team_name']; ?></option>
+					<?php 
+					} 
+					?>
+				</select></br>
+				<input type="submit" value="Spara"/>
+				<input type="hidden" name="tournament" value="<?php echo $tournament_id; ?>" />
+			</form>	
+		</div>
+	</div>
 </div>
+
 <?php
 
 
