@@ -120,7 +120,7 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 			</tbody>
 		</table>
 	<?php } ?>
-		<button id="check" name="save_bets" value="Spara Bets">spara bets</button>
+		<button class="btn btn-default" id="check" name="save_bets" value="Spara Bets">spara bets</button>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

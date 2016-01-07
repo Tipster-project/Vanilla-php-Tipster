@@ -1,6 +1,6 @@
 <?php include 'includes/header.php' ?>
 <?php include 'includes/menu.php'; ?>
-<div class="container">
+<div id="container_create_group" class="container">
 	<div class="row">
 		<div id='tournament_reg' class='col-sm-12'>
 			<h2>Skapa grupp</h2><br/>
