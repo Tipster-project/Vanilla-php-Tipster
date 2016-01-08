@@ -1,26 +1,41 @@
 <?php require "db_connect.php";
 session_start();
 $user_id = $_SESSION["user_id"];
-$tournament_id = $_GET['tour_id'];
-
+$tournament_id = $_GET['tour_id'];			
 /* REGISTRERING AV SLUTVINNARE OCH SKYTTEKUNG */
 $query1 = "SELECT team_name, team_id FROM teams";
 $result1 = $db_connect->query($query1);
+
+$query2 = "SELECT * FROM extra_bets WHERE user_id = $user_id AND tournament_id = $tournament_id";
+$result2 = $db_connect->query($query2);
+$row2 = mysqli_fetch_assoc($result2);
+$selected_player = $row2["winning_player"];
+$selected_team = $row2["winning_team"];
 ?>
 <div class="container">
 	<div class="row">
 		<div class="extra_bet_box">
-			<form action="save_extra_bet.php" class="col-sm-12" method="post">
+			<form action="includes/save_extra_bet.php" class="col-sm-12" method="post">
 				<label for="player">Målkung:</label>
-				<input type="text" name="player" />
-
+					<?php
+						if(is_null($selected_player)) {
+							?>
+							<input type="text" name="player"/>
+							<?php		
+						}
+						else {
+							?>
+							<input type="text" name="player" value="<?php echo $selected_player; ?>"/>
+							<?php
+						}
+					?>
 				<label for="winning_team">EM-vinnare 2016:</label>
 				<select name="selected_team"> 
 					<?php
 					while($row = mysqli_fetch_assoc($result1)) { 
-						?>
+					?>
 						<option value="<?php echo $row['team_id']; ?>"><?php echo $row['team_name']; ?></option>
-					<?php 
+					<?php
 					} 
 					?>
 				</select></br>
@@ -169,6 +184,13 @@ $(document).ready(function(){
 		}
 
 	});
+	var text1 = <?php echo $selected_team; ?>;
+	$("select option").filter(function() {
+		if(text1 != "") {
+	    	//may want to use $.trim in here
+	    	return $(this).val() == text1;
+	    } 
+	}).prop('selected', true);
 
 	
 });
